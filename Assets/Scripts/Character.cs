@@ -23,7 +23,7 @@ public class Character : MonoBehaviour
     public GameObject target;
     [SerializeField] public GameObject Hand;
     [SerializeField] public GameObject BulletPrefab;
-     private GameObject currentBullet = null;
+    public GameObject currentBullet = null;
     [SerializeField] public GameObject Weapon;
     [SerializeField] public float bulletSpeed = 5f;
 
@@ -62,10 +62,12 @@ public class Character : MonoBehaviour
     // }
     protected void Fire()
     {
-        currentBullet = Instantiate(BulletPrefab, Weapon.transform.localPosition, Quaternion.identity);
+        currentBullet = Instantiate(BulletPrefab, Hand.transform.position, Quaternion.identity);
         Vector3 bulletDirection = (target.transform.position - gameObject.transform.position).normalized;
+        currentBullet.transform.rotation = Quaternion.LookRotation(bulletDirection);
+        currentBullet.transform.Rotate(0,80,0);
         transform.rotation = Quaternion.LookRotation(bulletDirection);
-        currentBullet.AddComponent<Bullet>().OnInit(bulletDirection, bulletSpeed,this,5f);
+        currentBullet.AddComponent<Bullet>().OnInit(bulletDirection, bulletSpeed,this,scanRadius,this);
     }
 
     public void OnBulletDestroyed()
@@ -76,7 +78,18 @@ public class Character : MonoBehaviour
     public void setWeapon(GameObject Weapon)
     {
         GameObject characterWeapon = Instantiate(Weapon,Hand.transform.position,Quaternion.identity,Hand.transform);
-        characterWeapon.transform.rotation = Quaternion.Euler(180,0,0);
+        characterWeapon.transform.rotation = Quaternion.Euler(180,90,0);
+    }
+    //Dead
+    public void Die()
+    {
+        ChangeAnim("die");
+
+    }
+    //Dance
+    public void Dance()
+    {
+        ChangeAnim("dance");
     }
     //Animation
 
@@ -89,4 +102,9 @@ public class Character : MonoBehaviour
             anim.SetTrigger(currentAnimName);
         }
     }   
+    // State Change
+    public void ChangeState(CharacterState newState)
+    {
+        CurrentState = newState;
+    }
 }

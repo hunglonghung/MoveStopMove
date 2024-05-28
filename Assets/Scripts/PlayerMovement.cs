@@ -6,6 +6,7 @@ public class PlayerMovement : Character
 {
     [SerializeField] public FloatingJoystick FloatingJoystick;
     [SerializeField] Collider[] hitColliders;
+    [SerializeField] LayerMask layer ;
 
     // Start is called before the first frame update
     void Start()
@@ -30,14 +31,21 @@ public class PlayerMovement : Character
             case CharacterState.Attack:
                 Attack();
                 break;
+            case CharacterState.Lose:
+                Die();
+                break;
+            case CharacterState.Win:
+                Dance();
+                break;
         }
         objectScan();
 
     }
     void checkState()
     {
+        //if enemy list = 0 => win
         if(checkTarget(hitColliders)&& 
-        FloatingJoystick.Vertical == 0 && FloatingJoystick.Horizontal == 0) 
+        FloatingJoystick.Vertical == 0 && FloatingJoystick.Horizontal == 0 ) 
         CurrentState = CharacterState.Attack;
         else if(FloatingJoystick.Vertical == 0 && FloatingJoystick.Horizontal == 0) CurrentState = CharacterState.Idle;
         else CurrentState = CharacterState.Run;
@@ -45,7 +53,7 @@ public class PlayerMovement : Character
     // Attack
     void objectScan()
     {
-        hitColliders = Physics.OverlapSphere(transform.position, scanRadius);
+        hitColliders = Physics.OverlapSphere(transform.position, scanRadius,layer);
     }
     bool checkTarget(Collider[] hitColliders)
     {

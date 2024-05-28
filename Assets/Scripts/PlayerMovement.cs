@@ -43,12 +43,13 @@ public class PlayerMovement : Character
     }
     void checkState()
     {
-        //if enemy list = 0 => win
-        if(checkTarget(hitColliders)&& 
-        FloatingJoystick.Vertical == 0 && FloatingJoystick.Horizontal == 0 ) 
-        CurrentState = CharacterState.Attack;
-        else if(FloatingJoystick.Vertical == 0 && FloatingJoystick.Horizontal == 0) CurrentState = CharacterState.Idle;
-        else CurrentState = CharacterState.Run;
+    if(FloatingJoystick.Vertical == 0 && FloatingJoystick.Horizontal == 0)
+    {
+        if(checkTarget(hitColliders) && currentBullet == null) CurrentState = CharacterState.Attack;
+        else CurrentState = CharacterState.Idle;
+    }
+    else CurrentState = CharacterState.Run;
+    
     }
     // Attack
     void objectScan()

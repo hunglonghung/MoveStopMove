@@ -6,19 +6,10 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    public enum CharacterState
-        {
-            Run,
-            Attack,
-            Idle,
-            Win,
-            Lose
-        }
     public float MoveSpeed;
-    public Animator anim;
+    [SerializeField] public Animator anim;
     public string currentAnimName;
     public Vector3 MoveDirection;
-    public CharacterState CurrentState;
     public float scanRadius = 5.0f;
     public GameObject target;
     [SerializeField] public GameObject Hand;
@@ -26,9 +17,19 @@ public class Character : MonoBehaviour
     public GameObject currentBullet = null;
     [SerializeField] public GameObject Weapon;
     [SerializeField] public float bulletSpeed = 5f;
+    
 
+    public void ChangeAnim(string animName)
+    {
+        if(currentAnimName != animName)
+        {
+            anim.ResetTrigger(animName);
+            currentAnimName = animName;
+            anim.SetTrigger(currentAnimName);
+        }
+    }
     // Run
-    protected void Move(Vector3 direction)
+    public void Move(Vector3 direction)
     {
         
         transform.Translate(direction * MoveSpeed * Time.deltaTime, Space.World);
@@ -67,7 +68,7 @@ public class Character : MonoBehaviour
         currentBullet.transform.rotation = Quaternion.LookRotation(bulletDirection);
         currentBullet.transform.Rotate(0,80,0);
         transform.rotation = Quaternion.LookRotation(bulletDirection);
-        currentBullet.AddComponent<Bullet>().OnInit(bulletDirection, bulletSpeed,this,scanRadius,this);
+        // currentBullet.AddComponent<Bullet>().OnInit(bulletDirection, bulletSpeed,this,scanRadius,this);
     }
 
     public void OnBulletDestroyed()
@@ -91,20 +92,19 @@ public class Character : MonoBehaviour
     {
         ChangeAnim("dance");
     }
-    //Animation
+    public virtual void OnInit()
+    {
+    }
+    public virtual void OnDespawn()
+    {
 
-    public void ChangeAnim(string animName)
+    }
+    public void OnHit(float damage)
     {
-        if (currentAnimName != animName)
-        {
-            anim.ResetTrigger(currentAnimName);
-            currentAnimName = animName;
-            anim.SetTrigger(currentAnimName);
-        }
-    }   
-    // State Change
-    public void ChangeState(CharacterState newState)
+        
+    }
+    public virtual void OnDeath()
     {
-        CurrentState = newState;
+ 
     }
 }

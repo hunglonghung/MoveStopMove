@@ -842,10 +842,13 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: -927199367670048503, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1771102879}
+      addedObject: {fileID: 1771102880}
     - targetCorrespondingSourceObject: {fileID: -927199367670048503, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1771102880}
+      addedObject: {fileID: 1771102882}
+    - targetCorrespondingSourceObject: {fileID: -927199367670048503, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1771102883}
   m_SourcePrefab: {fileID: 100100000, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
 --- !u!1 &963194225
 GameObject:
@@ -1697,35 +1700,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
   m_PrefabInstance: {fileID: 794888324}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1771102879
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1771102876}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bd675a6d3018419b864dbef88f4bf87, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MoveSpeed: 10
-  anim: {fileID: 1771102877}
-  currentAnimName: 
-  MoveDirection: {x: 0, y: 0, z: 0}
-  CurrentState: 2
-  scanRadius: 10
-  target: {fileID: 0}
-  Hand: {fileID: 359196442}
-  BulletPrefab: {fileID: 2688547913124262168, guid: 2b0fbdb1dbfa34f97856140216e24e60, type: 3}
-  currentBullet: {fileID: 0}
-  Weapon: {fileID: 2688547913124262168, guid: 2b0fbdb1dbfa34f97856140216e24e60, type: 3}
-  bulletSpeed: 5
-  FloatingJoystick: {fileID: 30469788}
-  hitColliders: []
-  layer:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!65 &1771102880
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1747,6 +1721,47 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 2.3829513, z: 1}
   m_Center: {x: 0, y: 1.188539, z: 0}
+--- !u!114 &1771102882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1771102876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cac7d03b0058a465aa84207cecc28d39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 2688547913124262168, guid: 2b0fbdb1dbfa34f97856140216e24e60, type: 3}
+  poolSize: 3
+--- !u!114 &1771102883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1771102876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3089a084ab9d467aa0c72aefef398c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 1771102877}
+  currentAnimName: 
+  FloatingJoystick: {fileID: 30469788}
+  hitColliders: []
+  layer:
+    serializedVersion: 2
+    m_Bits: 64
+  MoveSpeed: 10
+  MoveDirection: {x: 0, y: 0, z: 0}
+  scanRadius: 5
+  target: {fileID: 0}
+  Hand: {fileID: 359196442}
+  Weapon: {fileID: 2688547913124262168, guid: 2b0fbdb1dbfa34f97856140216e24e60, type: 3}
+  bulletSpeed: 10
+  CurrentBullet: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

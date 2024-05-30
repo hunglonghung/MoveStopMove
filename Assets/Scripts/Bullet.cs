@@ -1,49 +1,36 @@
-// using System.Collections;
-// using System.Collections.Generic;
-// using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-// public class Bullet : MonoBehaviour
-// {
-//     private Vector3 direction;
-//     private float speed;
-//     public Character weapon;
-//     private float maxDistance ;
-//     private Vector3 startPosition;
-//     public Character Attacker;
-//     public Character Victim;
+public class Bullet : MonoBehaviour
+{
+    private Vector3 direction;
+    private float speed;
+    private float distanceTraveled;
+    private float maxDistance;
+    private Player player;
 
-//     public void OnInit(Vector3 direction, float speed, Character weapon, float maxDistance, Character Attacker)
-//     {
-//         this.direction = direction;
-//         this.speed = speed;
-//         this.weapon = weapon;
-//         this.maxDistance = maxDistance;
-//         this.startPosition = transform.position;
-//         this.Attacker = Attacker;
-//     }
+    public void OnInit(Vector3 bulletDirection, float bulletSpeed, Player playerRef, float scanRadius)
+    {
+        direction = bulletDirection;
+        speed = bulletSpeed;
+        player = playerRef;
+        maxDistance = scanRadius;
+        distanceTraveled = 0f;
+        transform.rotation = Quaternion.LookRotation(direction);
+        transform.Rotate(0,100,0);
+    }
 
-//     void Update()
-//     {
-//         transform.Translate(direction * speed * Time.deltaTime, Space.World);
-//         if (Vector3.Distance(startPosition, transform.position) >= maxDistance)
-//         {
-//             Destroy(gameObject);
-//             weapon.OnBulletDestroyed();
-//         }
-//         transform.Rotate(0,0,20f);
-//     }
-//     void OnDestroy()
-//     {
-//         if (weapon != null)
-//         {
-//             weapon.OnBulletDestroyed();
-//         }
-//     }
-//     private void OnTriggerEnter(Collider other) {
-//         Victim = other.gameObject.GetComponent<Character>();
-//         if(Attacker != Victim)
-//         {
-//             Victim.ChangeState(Character.CharacterState.Lose);
-//         }
-//     }
-// }
+    private void Update()
+    {
+        transform.Rotate(0,0,20f);
+        float distanceToTravel = speed * Time.deltaTime;
+        transform.Translate(direction * distanceToTravel, Space.World);
+        distanceTraveled += distanceToTravel;
+        if (distanceTraveled >= maxDistance)
+        {
+            BulletPool.Instance.ReturnBullet(gameObject);
+        }
+        
+    }
+}

@@ -40,9 +40,13 @@ public class Bullet : MonoBehaviour
         {
             victim = other.GetComponent<Character>(); 
             Debug.Log("Attacker: " + attacker.name + " hit Victim: " + victim.name);
+            if(!CheckSameCharacter())
+            {
+                victim.isDead = true;
+            }
         }
     }
-    public bool checkSameCharacter()
+    public bool CheckSameCharacter()
     {
         if(attacker != victim) return false;
         else return true;

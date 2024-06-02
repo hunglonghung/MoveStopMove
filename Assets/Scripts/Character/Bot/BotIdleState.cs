@@ -6,21 +6,32 @@ using UnityEngine.AI;
 public class BotIdleState : IState<Character>
 {
     float time;
+    float randomTime;
     public void OnEnter(Character t)
     {
         t.ChangeAnim("idle");
         time = 0;
+        randomTime = Random.Range(3,9); 
     }
 
     public void OnExecute(Character t)
     {
-        time += Time.deltaTime;
-        t.objectScan();
-        if(((Bot)t).CheckPathPending() && time > Random.Range(1.5f,4))
+        if(t.isDead) t.ChangeState(new BotLoseState());
+        else
         {
-            t.ChangeState(new BotRunState());
-        } 
-        else if(t.CheckTarget(t.hitColliders) >= 2 ) t.ChangeState(new BotAttackState());
+            time += Time.deltaTime;
+            ((Bot)t).StopMoving();
+            t.objectScan();
+            if(((Bot)t).CheckPathPending() && time > randomTime)
+            {
+                t.ChangeState(new BotRunState());
+            } 
+            else if(t.CheckTarget(t.hitColliders) >= 1 && !BulletPool.Instance.IsBulletActive(t))
+            {
+                t.ChangeState(new BotAttackState());
+            } 
+        }
+        
     }
 
     public void OnExit(Character t)

@@ -1371,7 +1371,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -16.099, y: 0.29910088, z: -9.2029}
-  m_LocalScale: {x: 25.915977, y: 25.915977, z: 25.915977}
+  m_LocalScale: {x: 16.753126, y: 16.753126, z: 16.753126}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1745,8 +1745,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 2.295939, z: 1}
-  m_Center: {x: 0, y: 1.2864048, z: 0}
+  m_Size: {x: 1, y: 2.3461564, z: 1.2744789}
+  m_Center: {x: 0, y: 1.3115135, z: 0.028415054}
 --- !u!54 &1766712792
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1797,11 +1797,11 @@ MonoBehaviour:
   bots: {fileID: 0}
   MoveSpeed: 0
   MoveDirection: {x: 0, y: 0, z: 0}
-  scanRadius: 5
+  scanRadius: 10
   target: {fileID: 0}
   Hand: {fileID: 517124765}
   Weapon: {fileID: 362137616735914780, guid: 128ca77c19d5b435aa4d7526705aa300, type: 3}
-  bulletSpeed: 5
+  bulletSpeed: 10
   CurrentBullet: {fileID: 0}
   patrolRadius: 20
   changeDestinationDistance: 1
@@ -1972,7 +1972,7 @@ MonoBehaviour:
   botList: {fileID: 11400000, guid: 1a839d5784bb94e019cf752eed12e6c8, type: 2}
   botPrefab: {fileID: 1766712790}
   numberOfBots: 10
-  spawnRadius: 100
+  spawnRadius: 30
 --- !u!4 &1941647669
 Transform:
   m_ObjectHideFlags: 0

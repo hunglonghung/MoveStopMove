@@ -29,6 +29,10 @@ public class Player : Character
             transform.rotation = Quaternion.LookRotation(direction);
         }
     }
+    public void DisableJoystick()
+    {
+        FloatingJoystick.gameObject.SetActive(false);
+    }
 
     
 

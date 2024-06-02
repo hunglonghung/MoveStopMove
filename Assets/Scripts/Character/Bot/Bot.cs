@@ -40,17 +40,16 @@ public class Bot : Character
         agent.SetDestination(navHit.position); 
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log(other.tag);
-        if (other.tag == "Bullet")
-        {
-            GetComponent<Character>().isDead = true;
-        }
-    }
-
     public bool CheckPathPending()
     {
         return !agent.pathPending;
+    }
+    public void StopMoving()
+    {
+        agent.isStopped = true;
+    }
+    public void StartMoving()
+    {
+        agent.isStopped = false;
     }
 }

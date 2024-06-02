@@ -14,34 +14,36 @@ public class PlayerAttackState : IState<Character>
 
     public void OnExecute(Character t)
     {
-        // ((Player)t).CheckWin(((Player)t).bots);
-        // if(t.isWin) t.ChangeState(new WinState());
-        // if(t.isDead) t.ChangeState(new LoseState());
-        t.objectScan();
-        ((Player)t).GetMoveDirection();//Player
-        if(((Player)t).GetInput())
-        {
-            t.ChangeState(new PlayerRunState());
-        }
+        if(t.isDead) t.ChangeState(new PlayerLoseState());
         else
         {
-            AnimatorStateInfo stateInfo = t.anim.GetCurrentAnimatorStateInfo(0);
-            if(t.CheckTarget(t.hitColliders) <= 1|| BulletPool.Instance.IsBulletActive(t))
+            t.objectScan();
+            ((Player)t).GetMoveDirection();//Player
+            if(((Player)t).GetInput())
             {
-                t.ChangeState(new PlayerIdleState());
+                t.ChangeState(new PlayerRunState());
             }
             else
             {
-                t.LookAtEnemy();
-                
-                if (stateInfo.IsName("Attack") && stateInfo.normalizedTime >= 0.8f)
+                AnimatorStateInfo stateInfo = t.anim.GetCurrentAnimatorStateInfo(0);
+                if(t.CheckTarget(t.hitColliders) == 0|| BulletPool.Instance.IsBulletActive(t))
                 {
-                    // Animation "attack" has finished
-                    t.Fire();
+                    t.ChangeState(new PlayerIdleState());
                 }
-                
+                else
+                {
+                    t.LookAtEnemy();
+                    
+                    if (stateInfo.IsName("Attack") && stateInfo.normalizedTime >= 0.8f)
+                    {
+                        // Animation "attack" has finished
+                        t.Fire();
+                    }
+                    
+                }
             }
         }
+        
     }
 
     public void OnExit(Character t)

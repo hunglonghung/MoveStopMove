@@ -26,8 +26,8 @@ public class IdleState : IState<Character>
         if(((Player)t).GetInput()) t.ChangeState(new RunState());
         else if(t.CheckTarget(t.hitColliders) == true) t.ChangeState(new AttackState());
         //Bot
-        if(((Bot)t).GetComponent<NavMeshAgent>().pathPending == true) t.ChangeState(new RunState());
-        else if(t.CheckTarget(t.hitColliders) == true) t.ChangeState(new AttackState());
+        // if(((Bot)t).GetComponent<NavMeshAgent>().pathPending == true) t.ChangeState(new RunState());
+        // else if(t.CheckTarget(t.hitColliders) == true) t.ChangeState(new AttackState());
     }
 
     public void OnExit(Character t)

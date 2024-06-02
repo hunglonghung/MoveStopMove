@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class Character : MonoBehaviour
 {
@@ -13,15 +12,26 @@ public class Character : MonoBehaviour
     public string currentAnimName;
     public bool isWin;
     public bool isDead;
+    [Header("Target")]
     [SerializeField] public Collider[] hitColliders;
     [SerializeField] LayerMask layer;
-    [SerializeField] public BotList bots;
+    public GameObject target;
+    public float scanRadius = 5.0f;
+    [Header("Movement")]
     public float MoveSpeed;
     public Vector3 MoveDirection;
-    public float scanRadius = 5.0f;
-    public GameObject target;
+    [Header("Skin and Weapon")]
+    [SerializeField] public SkinData Skin;
+    [SerializeField] public GameObject CharacterSkin;
     [SerializeField] public GameObject Hand;
     [SerializeField] public GameObject Weapon;
+    [SerializeField] public GameObject Pants;
+    [SerializeField] public Material PantsMaterial;
+    [SerializeField] public GameObject Head;
+    [SerializeField] public GameObject Hat;
+    [SerializeField] public Color Color;
+
+    [Header("Bullet")]
     [SerializeField] public float bulletSpeed = 5f;
     public GameObject CurrentBullet;
 
@@ -33,7 +43,6 @@ public class Character : MonoBehaviour
     void Update()
     {
         if (currentState == null) return;
-        Debug.Log(currentState);
         currentState.OnExecute(this);
     }
     
@@ -52,9 +61,11 @@ public class Character : MonoBehaviour
         }
     }
 
-    public void OnInit()
+    public virtual void OnInit()
     {
         ChangeState(new PlayerIdleState());
+        SetWeapon(Weapon);
+        SetSkin(Skin); 
     }
     
     public void ChangeAnim(string animName)
@@ -82,6 +93,7 @@ public class Character : MonoBehaviour
             if (CurrentBullet != null)
             {
                 CurrentBullet.transform.position = gameObject.transform.position;
+                CurrentBullet.transform.position += Vector3.up;
                 Vector3 bulletDirection = (target.transform.position - gameObject.transform.position).normalized;
                 CurrentBullet.GetComponent<Bullet>().OnInit(bulletDirection, bulletSpeed, this, scanRadius); // Truyền thông tin attacker
             }
@@ -89,10 +101,35 @@ public class Character : MonoBehaviour
     }
 
     //Set Weapon
-    public void setWeapon(GameObject Weapon)
+    public void SetWeapon(GameObject Weapon)
     {
-        GameObject characterWeapon = Instantiate(Weapon,Hand.transform.position,Quaternion.identity,Hand.transform);
-        characterWeapon.transform.rotation = Quaternion.Euler(180,90,0);
+        GameObject characterWeapon = Instantiate(Weapon, Hand.transform.position, Quaternion.identity, Hand.transform);
+        characterWeapon.transform.rotation = Quaternion.Euler(180, 90, 0);
+    }
+
+    //Set Skin
+    public void SetSkin(SkinData skinData)
+    {
+        int randomIndex = Random.Range(0, skinData.skinList.Count);
+
+        // Set hat
+        Hat = skinData.GetHat(randomIndex);
+        if (Hat != null)
+        {
+            GameObject botHat = Instantiate(Hat, Head.transform.position, Quaternion.identity, Head.transform);
+            botHat.transform.position += Vector3.up * 0.4f;
+        }
+
+        // Set color
+        Color = skinData.GetColor(randomIndex);
+        CharacterSkin.GetComponent<Renderer>().material.color = Color;
+
+        // Set pants material
+        PantsMaterial = skinData.GetPantsMaterial(randomIndex);
+        if (PantsMaterial != null)
+        {
+            Pants.GetComponent<Renderer>().material = PantsMaterial;
+        }
     }
 
     //Target 
@@ -101,6 +138,7 @@ public class Character : MonoBehaviour
         hitColliders = Physics.OverlapSphere(transform.position, scanRadius, layer);
         hitColliders = FilterSelf(hitColliders);
     }
+
     private Collider[] FilterSelf(Collider[] colliders)
     {
         List<Collider> filteredColliders = new List<Collider>();
@@ -117,17 +155,16 @@ public class Character : MonoBehaviour
     public int CheckTarget(Collider[] hitColliders)
     {
         int targetCount = 0;
-        if(hitColliders.Count() > 0)
+        if (hitColliders.Length > 0)
         {
             foreach (Collider hitCollider in hitColliders)
             {
-                targetCount ++;
+                targetCount++;
             }
             target = hitColliders[0].gameObject;
         }
         return targetCount;
     }
-
 
     //Destroy
     public void OnDestroy()

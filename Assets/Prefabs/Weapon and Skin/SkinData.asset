@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06d302244fa2f4bd7815fade8a271a8b, type: 3}
+  m_Name: SkinData
+  m_EditorClassIdentifier: 
+  skinList:
+  - price: 100
+    hat: {fileID: 3085702443173169776, guid: da3d596d3858746e39ccf4cd83a9f83c, type: 3}
+    color: {r: 0, g: 0.93155813, b: 1, a: 0}
+    pants: {fileID: 2100000, guid: 519fe714c5b8b4ff5bc8cd33d20e600c, type: 2}
+  - price: 100
+    hat: {fileID: 356330044942135384, guid: 4bee6c30f93654eff9ba2007751ac166, type: 3}
+    color: {r: 0, g: 1, b: 0.53688645, a: 0}
+    pants: {fileID: 2100000, guid: dde3eb48ee3194fb4a93b2c5f8009558, type: 2}
+  - price: 100
+    hat: {fileID: 4604666586082490318, guid: c1cda6a9f962045c5bbaf87a975cf629, type: 3}
+    color: {r: 0.567356, g: 1, b: 0, a: 0}
+    pants: {fileID: 2100000, guid: b02e7dbc638a842118ea28c4770ad355, type: 2}
+  - price: 100
+    hat: {fileID: 1827652136198243161, guid: 6c4707eca5ccd4a189c12349f32720a4, type: 3}
+    color: {r: 1, g: 0.85974216, b: 0.08018869, a: 0}
+    pants: {fileID: 2100000, guid: 8db117ecec09f426fb9fd3bf4ae16ba5, type: 2}
+  - price: 100
+    hat: {fileID: 1776292689594740121, guid: a15bd99f279ba4a56853218117fd6373, type: 3}
+    color: {r: 1, g: 0, b: 0, a: 0}
+    pants: {fileID: 2100000, guid: d592da6c9abf24562bb64c9c7eac516a, type: 2}

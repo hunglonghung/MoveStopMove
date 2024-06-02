@@ -11,7 +11,7 @@ public class BotIdleState : IState<Character>
     {
         t.ChangeAnim("idle");
         time = 0;
-        randomTime = Random.Range(3,9); 
+        randomTime = Random.Range(1,5); 
     }
 
     public void OnExecute(Character t)

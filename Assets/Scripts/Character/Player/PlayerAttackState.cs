@@ -34,7 +34,7 @@ public class PlayerAttackState : IState<Character>
                 {
                     t.LookAtEnemy();
                     
-                    if (stateInfo.IsName("Attack") && stateInfo.normalizedTime >= 0.8f)
+                    if (stateInfo.IsName("Attack") && stateInfo.normalizedTime >= 0.7f)
                     {
                         // Animation "attack" has finished
                         t.Fire();

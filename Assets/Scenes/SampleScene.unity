@@ -273,6 +273,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a47f546fc70ec8428172694e78e4288, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &97809691 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4436829760782469501, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
+  m_PrefabInstance: {fileID: 1766712789}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &100111618 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -2606217863934893458, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
+  m_PrefabInstance: {fileID: 794888324}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &233338762
 GameObject:
   m_ObjectHideFlags: 0
@@ -341,6 +351,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &265906733 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -2606217863934893458, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
+  m_PrefabInstance: {fileID: 1766712789}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &290501967
 GameObject:
   m_ObjectHideFlags: 0
@@ -481,10 +496,10 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: -8542655298583481684, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
   m_PrefabInstance: {fileID: 794888324}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &517124765 stripped
+--- !u!1 &448792597 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 3772551937752447412, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
-  m_PrefabInstance: {fileID: 1766712789}
+  m_CorrespondingSourceObject: {fileID: 4436829760782469501, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
+  m_PrefabInstance: {fileID: 794888324}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
@@ -1052,6 +1067,11 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &1290082397 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -8542655298583481684, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
+  m_PrefabInstance: {fileID: 1766712789}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1303632866
 GameObject:
   m_ObjectHideFlags: 3
@@ -1376,6 +1396,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1639210649 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8237072887224533061, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
+  m_PrefabInstance: {fileID: 1766712789}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1766712789
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1567,7 +1592,7 @@ PrefabInstance:
     - target: {fileID: -529177695146175607, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 8db117ecec09f426fb9fd3bf4ae16ba5, type: 2}
+      objectReference: {fileID: 2100000, guid: d592da6c9abf24562bb64c9c7eac516a, type: 2}
     - target: {fileID: 129350255495253916, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -1794,13 +1819,19 @@ MonoBehaviour:
   layer:
     serializedVersion: 2
     m_Bits: 64
-  bots: {fileID: 0}
+  target: {fileID: 0}
+  scanRadius: 10
   MoveSpeed: 0
   MoveDirection: {x: 0, y: 0, z: 0}
-  scanRadius: 10
-  target: {fileID: 0}
-  Hand: {fileID: 517124765}
+  Skin: {fileID: 11400000, guid: 2a33099e631f940bf83a0ed597e9aa82, type: 2}
+  CharacterSkin: {fileID: 1639210649}
+  Hand: {fileID: 1290082397}
   Weapon: {fileID: 362137616735914780, guid: 128ca77c19d5b435aa4d7526705aa300, type: 3}
+  Pants: {fileID: 265906733}
+  PantsMaterial: {fileID: 0}
+  Head: {fileID: 97809691}
+  Hat: {fileID: 0}
+  Color: {r: 0, g: 0, b: 0, a: 0}
   bulletSpeed: 10
   CurrentBullet: {fileID: 0}
   patrolRadius: 20
@@ -1903,13 +1934,19 @@ MonoBehaviour:
   layer:
     serializedVersion: 2
     m_Bits: 64
-  bots: {fileID: 0}
+  target: {fileID: 0}
+  scanRadius: 10
   MoveSpeed: 10
   MoveDirection: {x: 0, y: 0, z: 0}
-  scanRadius: 10
-  target: {fileID: 0}
+  Skin: {fileID: 11400000, guid: 2a33099e631f940bf83a0ed597e9aa82, type: 2}
+  CharacterSkin: {fileID: 2129183188}
   Hand: {fileID: 359196442}
   Weapon: {fileID: 2688547913124262168, guid: 2b0fbdb1dbfa34f97856140216e24e60, type: 3}
+  Pants: {fileID: 100111618}
+  PantsMaterial: {fileID: 0}
+  Head: {fileID: 448792597}
+  Hat: {fileID: 0}
+  Color: {r: 0, g: 0, b: 0, a: 0}
   bulletSpeed: 10
   CurrentBullet: {fileID: 0}
   FloatingJoystick: {fileID: 30469788}
@@ -1988,6 +2025,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2129183188 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8237072887224533061, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
+  m_PrefabInstance: {fileID: 794888324}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -7,20 +7,15 @@ public class Bot : Character
     public float changeDestinationDistance = 1f; 
 
     [SerializeField] public NavMeshAgent agent;
-
-    void Start()
+    public override void OnInit()
     {
         agent = GetComponent<NavMeshAgent>(); 
         MoveToRandomPosition(); 
         ChangeState(new BotIdleState());
+        SetWeapon(Weapon);
+        SetSkin(Skin); 
     }
 
-    void Update()
-    {
-        if (currentState == null) return;
-        currentState.OnExecute(this);
-        UpdateNewPosition();
-    }
 
     public void UpdateNewPosition()
     {

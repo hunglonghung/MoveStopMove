@@ -8,13 +8,13 @@ public class Bullet : MonoBehaviour
     private float speed;
     private float distanceTraveled;
     private float maxDistance;
-    private Player player;
+    private Character player;
 
-    public void OnInit(Vector3 bulletDirection, float bulletSpeed, Player playerRef, float scanRadius)
+    public void OnInit(Vector3 bulletDirection, float bulletSpeed, Character character, float scanRadius)
     {
         direction = bulletDirection;
         speed = bulletSpeed;
-        player = playerRef;
+        player = character;
         maxDistance = scanRadius;
         distanceTraveled = 0f;
         transform.rotation = Quaternion.LookRotation(direction);

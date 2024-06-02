@@ -7,7 +7,7 @@ public class WinState : IState<Character>
 
     public void OnEnter(Character t)
     {
-
+        t.ChangeAnim("dance");
     }
 
     public void OnExecute(Character t)

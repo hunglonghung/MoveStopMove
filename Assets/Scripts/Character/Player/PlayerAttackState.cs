@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class AttackState : IState<Character>
+public class PlayerAttackState : IState<Character>
 {
 
     public void OnEnter(Character t)
@@ -21,14 +21,14 @@ public class AttackState : IState<Character>
         ((Player)t).GetMoveDirection();//Player
         if(((Player)t).GetInput())
         {
-            t.ChangeState(new RunState());
+            t.ChangeState(new PlayerRunState());
         }
         else
         {
             AnimatorStateInfo stateInfo = t.anim.GetCurrentAnimatorStateInfo(0);
-            if(t.hitColliders.Count() == 1 || BulletPool.Instance.IsBulletActive())
+            if(t.CheckTarget(t.hitColliders) <= 1|| BulletPool.Instance.IsBulletActive(t))
             {
-                t.ChangeState(new IdleState());
+                t.ChangeState(new PlayerIdleState());
             }
             else
             {

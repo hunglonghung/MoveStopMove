@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WinState : IState<Character>
+public class PlayerWinState : IState<Character>
 {
 
     public void OnEnter(Character t)

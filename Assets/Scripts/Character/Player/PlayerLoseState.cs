@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LoseState : IState<Character>
+public class PlayerLoseState : IState<Character>
 {
     public void OnEnter(Character t)
     {

@@ -23,12 +23,12 @@ public class Character : MonoBehaviour
     [SerializeField] public GameObject Weapon;
     [SerializeField] public float bulletSpeed = 5f;
     public GameObject CurrentBullet;
+
     void Start()
     {
         OnInit();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (currentState == null) return;
@@ -36,7 +36,6 @@ public class Character : MonoBehaviour
         currentState.OnExecute(this);
     }
     
-    //Change State
     public void ChangeState(IState<Character> state)
     {
         if (currentState != null)
@@ -52,14 +51,11 @@ public class Character : MonoBehaviour
         }
     }
 
-
-    // Initiallize
     public void OnInit()
     {
-        ChangeState(new IdleState());
+        ChangeState(new PlayerIdleState());
     }
     
-    // Change Animation 
     public void ChangeAnim(string animName)
     {
         if(currentAnimName != animName)
@@ -69,37 +65,38 @@ public class Character : MonoBehaviour
             anim.SetTrigger(currentAnimName);
         }
     }
+
     public void LookAtEnemy()
     {
         Vector3 lookDirection = (target.transform.position - gameObject.transform.position).normalized;
         transform.rotation = Quaternion.LookRotation(lookDirection);
     }
+
     public void Fire()
     {
-        if(!BulletPool.Instance.IsBulletActive())
+        if (!BulletPool.Instance.IsBulletActive(this))
         {
             CurrentBullet = BulletPool.Instance.GetBullet();
-            CurrentBullet.transform.position = Hand.transform.position;
-            Vector3 bulletDirection = (target.transform.position - gameObject.transform.position).normalized;
-            CurrentBullet.GetComponent<Bullet>().OnInit(bulletDirection, bulletSpeed, this, scanRadius);
+            if (CurrentBullet != null)
+            {
+                CurrentBullet.transform.position = Hand.transform.position;
+                Vector3 bulletDirection = (target.transform.position - gameObject.transform.position).normalized;
+                CurrentBullet.GetComponent<Bullet>().OnInit(bulletDirection, bulletSpeed, this, scanRadius); // Truyền thông tin attacker
+            }
         }
-        
-        
     }
 
-    //Weapon
     public void setWeapon(GameObject Weapon)
     {
         GameObject characterWeapon = Instantiate(Weapon,Hand.transform.position,Quaternion.identity,Hand.transform);
         characterWeapon.transform.rotation = Quaternion.Euler(180,90,0);
     }
-    //Dead
+
     public void Die()
     {
         ChangeAnim("die");
-
     }
-    //Dance
+
     public void Dance()
     {
         ChangeAnim("dance");
@@ -110,33 +107,25 @@ public class Character : MonoBehaviour
         hitColliders = Physics.OverlapSphere(transform.position, scanRadius, layer);
     }
 
-    public bool CheckTarget(Collider[] hitColliders)
+    public int CheckTarget(Collider[] hitColliders)
     {
+        int targetCount = 0;
         foreach (Collider hitCollider in hitColliders)
         {
-            if (hitCollider.gameObject.tag == "Enemy")
+            targetCount ++;
+        }
+        target = hitColliders[1].gameObject;
+        return targetCount;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "bullet" )
+        {
+            if(!other.GetComponent<Bullet>().checkSameCharacter())
             {
-                target = hitCollider.gameObject;
-                return true;
+                isDead = true;
             }
         }
-        return false;
     }
-    // public void CheckWin(BotList bots)
-    // {
-    //     if(bots.bots.Count == 0)
-    //     {
-    //         GetComponent<Character>().isWin = true;
-    //     }
-        
-    // }
-    private void OnTriggerEnter(Collider other) {
-        if(other.tag == "bullet")
-        {
-            GetComponent<Character>().isDead = true;
-        }
-    }
-    
-
-
 }

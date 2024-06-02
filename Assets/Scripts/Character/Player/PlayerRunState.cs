@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class RunState : IState<Character>
+public class PlayerRunState : IState<Character>
 {
     public void OnEnter(Character t)
     {
@@ -17,12 +17,9 @@ public class RunState : IState<Character>
         // if(t.isDead) t.ChangeState(new LoseState());
         //Player 
         ((Player)t).GetMoveDirection();
-        if(!((Player)t).GetInput()) t.ChangeState(new IdleState());
+        if(!((Player)t).GetInput()) t.ChangeState(new PlayerIdleState());
         else ((Player)t).Move(((Player)t).MoveDirection);
-        //Bot
-        if(((Bot)t).GetComponent<NavMeshAgent>().pathPending == false) t.ChangeState(new IdleState());
-
-
+    
     }
 
     public void OnExit(Character t)

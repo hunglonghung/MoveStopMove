@@ -5,7 +5,7 @@ public class BulletPool : MonoBehaviour
 {
     public static BulletPool Instance;
     [SerializeField] private GameObject bulletPrefab;
-    [SerializeField] private int poolSize = 3;
+    [SerializeField] private int poolSize = 20;
     private List<GameObject> bullets;
 
     private void Awake()
@@ -38,13 +38,15 @@ public class BulletPool : MonoBehaviour
     {
         bullet.SetActive(false);
     }
-    public bool IsBulletActive()
+    
+    // Kiểm tra xem có đạn nào đang hoạt động bởi attacker này hay không
+    public bool IsBulletActive(Character attacker)
     {
         foreach (GameObject bullet in bullets)
         {
-            if (bullet.activeInHierarchy)
+            Bullet bulletComponent = bullet.GetComponent<Bullet>();
+            if (bullet.activeInHierarchy && bulletComponent.attacker == attacker)
             {
-                Debug.Log("true");
                 return true;
             }
         }

@@ -8,13 +8,14 @@ public class Bullet : MonoBehaviour
     private float speed;
     private float distanceTraveled;
     private float maxDistance;
-    private Character player;
+    public Character attacker;
+    public Character victim; 
 
     public void OnInit(Vector3 bulletDirection, float bulletSpeed, Character character, float scanRadius)
     {
         direction = bulletDirection;
         speed = bulletSpeed;
-        player = character;
+        attacker = character; 
         maxDistance = scanRadius;
         distanceTraveled = 0f;
         transform.rotation = Quaternion.LookRotation(direction);
@@ -31,6 +32,19 @@ public class Bullet : MonoBehaviour
         {
             BulletPool.Instance.ReturnBullet(gameObject);
         }
-        
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Character")
+        {
+            victim = other.GetComponent<Character>(); 
+            Debug.Log("Attacker: " + attacker.name + " hit Victim: " + victim.name);
+        }
+    }
+    public bool checkSameCharacter()
+    {
+        if(attacker != victim) return false;
+        else return true;
     }
 }

@@ -3,36 +3,31 @@ using UnityEngine.AI;
 
 public class Bot : Character
 {
-    public float patrolRadius = 20f; // Bán kính tuần tra của bot
-    public float changeDestinationDistance = 1f; // Khoảng cách để thay đổi điểm đến
+    public float patrolRadius = 20f; 
+    public float changeDestinationDistance = 1f; 
 
-    public NavMeshAgent agent;
+    [SerializeField] public NavMeshAgent agent;
 
-    public void Start()
+    void Start()
     {
         agent = GetComponent<NavMeshAgent>(); 
         MoveToRandomPosition(); 
-        OnInit(); // Khởi tạo bot để đảm bảo trạng thái ban đầu được thiết lập
+        ChangeState(new BotIdleState());
     }
 
-    public void Update()
+    void Update()
+    {
+        if (currentState == null) return;
+        currentState.OnExecute(this);
+        UpdateNewPosition();
+    }
+
+    public void UpdateNewPosition()
     {
         if (!agent.pathPending && agent.remainingDistance <= changeDestinationDistance)
         {
             MoveToRandomPosition(); 
         }
-        
-        // Log trạng thái hiện tại và tên animation để debug
-        if (currentState != null)
-        {
-            Debug.Log("Current State: " + currentState.GetType().Name);
-        }
-        else
-        {
-            Debug.Log("Current State: null");
-        }
-
-        Debug.Log("Current Anim Name: " + currentAnimName);
     }
 
     public void MoveToRandomPosition()
@@ -52,5 +47,10 @@ public class Bot : Character
         {
             GetComponent<Character>().isDead = true;
         }
+    }
+
+    public bool CheckPathPending()
+    {
+        return !agent.pathPending;
     }
 }

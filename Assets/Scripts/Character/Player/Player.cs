@@ -5,7 +5,10 @@ using UnityEngine;
 
 public class Player : Character
 {
+    [Header("Joystick")]
     [SerializeField] public FloatingJoystick FloatingJoystick;
+
+
     //Move Direction
     public void GetMoveDirection()
     {

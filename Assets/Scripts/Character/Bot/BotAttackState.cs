@@ -28,7 +28,7 @@ public class BotAttackState : IState<Character>
             {
                 t.LookAtEnemy();
                 
-                if (stateInfo.IsName("Attack") && stateInfo.normalizedTime >= 0.8f)
+                if (stateInfo.IsName("Attack") && stateInfo.normalizedTime >= 0.5f)
                 {
                     // Animation "attack" has finished
                     t.Fire();

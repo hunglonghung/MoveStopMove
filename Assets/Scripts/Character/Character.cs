@@ -34,6 +34,8 @@ public class Character : MonoBehaviour
     [Header("Bullet")]
     [SerializeField] public float bulletSpeed = 5f;
     public GameObject CurrentBullet;
+    [Header("Enemy List")]
+    [SerializeField] public BotSpawner BotSpawner;
 
     void Start()
     {
@@ -42,7 +44,9 @@ public class Character : MonoBehaviour
 
     void Update()
     {
+        isWin = CheckWin();
         if (currentState == null) return;
+        if (isWin) ChangeState(new PlayerWinState());
         currentState.OnExecute(this);
     }
     
@@ -171,4 +175,16 @@ public class Character : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
+    //Win condition
+    public bool CheckWin()
+    {
+        int enemyRemaining = BotSpawner.UnspawnedBotList.Count + BotSpawner.SpawnedBotList.Count ;
+        Debug.Log(enemyRemaining);
+        if(enemyRemaining == 0) return true;
+        else return false;
+    }
+
+    
+
 }

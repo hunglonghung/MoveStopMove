@@ -18,7 +18,7 @@ MonoBehaviour:
     color: {r: 0, g: 0.93155813, b: 1, a: 0}
     pants: {fileID: 2100000, guid: 519fe714c5b8b4ff5bc8cd33d20e600c, type: 2}
   - price: 100
-    hat: {fileID: 356330044942135384, guid: 4bee6c30f93654eff9ba2007751ac166, type: 3}
+    hat: {fileID: 5376021047788346049, guid: fe556420c24114a13b56aba64f486b41, type: 3}
     color: {r: 0, g: 1, b: 0.53688645, a: 0}
     pants: {fileID: 2100000, guid: dde3eb48ee3194fb4a93b2c5f8009558, type: 2}
   - price: 100

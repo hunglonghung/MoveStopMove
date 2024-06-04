@@ -12,7 +12,10 @@ public class PlayerRunState : IState<Character>
 
     public void OnExecute(Character t)
     {
-        if(t.isDead) t.ChangeState(new PlayerLoseState());
+        if(t.isDead) 
+        {
+            t.ChangeState(new PlayerLoseState());
+        }
         else
         {
             ((Player)t).GetMoveDirection();

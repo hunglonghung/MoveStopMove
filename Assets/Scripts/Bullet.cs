@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms;
+using UnityEngine.UIElements;
 
 public class Bullet : MonoBehaviour
 {
@@ -31,6 +34,7 @@ public class Bullet : MonoBehaviour
         if (distanceTraveled >= maxDistance)
         {
             BulletPool.Instance.ReturnBullet(gameObject);
+            transform.localScale = new Vector3(50,50,50);
         }
     }
 
@@ -43,9 +47,25 @@ public class Bullet : MonoBehaviour
             if(!CheckSameCharacter())
             {
                 victim.isDead = true;
+                OnKill(attacker);
             }
         }
     }
+
+    //On Kill Logic
+    public void OnKill(Character attacker)
+    {
+        attacker.KillCount ++;
+        attacker.SizeMultiplier += 0.1f;
+        attacker.Range += 1f; 
+        attacker.gameObject.transform.localScale = new Vector3(1, 1, 1) * attacker.SizeMultiplier;
+        attacker.BulletSpeed += 1f;
+        if (attacker is Player player)
+        {
+            player.IncreaseVirtualCameraRange(3f);
+        }
+    }
+
     public bool CheckSameCharacter()
     {
         if(attacker != victim) return false;

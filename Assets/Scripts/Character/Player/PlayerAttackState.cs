@@ -14,7 +14,10 @@ public class PlayerAttackState : IState<Character>
 
     public void OnExecute(Character t)
     {
-        if(t.isDead) t.ChangeState(new PlayerLoseState());
+        if(t.isDead) 
+        {
+            t.ChangeState(new PlayerLoseState());
+        }
         else
         {
             t.objectScan();

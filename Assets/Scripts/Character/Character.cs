@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Cinemachine;
 using UnityEngine;
 
 public class Character : MonoBehaviour
@@ -16,10 +17,13 @@ public class Character : MonoBehaviour
     [SerializeField] public Collider[] hitColliders;
     [SerializeField] LayerMask layer;
     public GameObject target;
-    public float scanRadius = 5.0f;
     [Header("Movement")]
     public float MoveSpeed;
     public Vector3 MoveDirection;
+    [Header("Size and Range")]
+    [SerializeField] public int KillCount = 0;
+    [SerializeField] public float Range = 10.0f;
+    [SerializeField] public float SizeMultiplier = 1f;
     [Header("Skin and Weapon")]
     [SerializeField] public SkinData Skin;
     [SerializeField] public GameObject CharacterSkin;
@@ -32,12 +36,13 @@ public class Character : MonoBehaviour
     [SerializeField] public Color Color;
 
     [Header("Bullet")]
-    [SerializeField] public float bulletSpeed = 5f;
+    [SerializeField] public float BulletSpeed = 5f;
     public GameObject CurrentBullet;
     [Header("Enemy List")]
     [SerializeField] public BotSpawner BotSpawner;
 
-    void Start()
+
+    public virtual void Start()
     {
         OnInit();
     }
@@ -97,9 +102,10 @@ public class Character : MonoBehaviour
             if (CurrentBullet != null)
             {
                 CurrentBullet.transform.position = gameObject.transform.position;
-                CurrentBullet.transform.position += Vector3.up;
+                CurrentBullet.transform.localScale = new Vector3(50,50,50) * SizeMultiplier;
+                CurrentBullet.transform.position += Vector3.up * SizeMultiplier;
                 Vector3 bulletDirection = (target.transform.position - gameObject.transform.position).normalized;
-                CurrentBullet.GetComponent<Bullet>().OnInit(bulletDirection, bulletSpeed, this, scanRadius); // Truyền thông tin attacker
+                CurrentBullet.GetComponent<Bullet>().OnInit(bulletDirection, BulletSpeed, this, Range); 
             }
         }
     }
@@ -139,7 +145,7 @@ public class Character : MonoBehaviour
     //Target 
     public void objectScan()
     {
-        hitColliders = Physics.OverlapSphere(transform.position, scanRadius, layer);
+        hitColliders = Physics.OverlapSphere(transform.position, Range, layer);
         hitColliders = FilterSelf(hitColliders);
     }
 
@@ -148,7 +154,7 @@ public class Character : MonoBehaviour
         List<Collider> filteredColliders = new List<Collider>();
         foreach (Collider collider in colliders)
         {
-            if (collider.gameObject != this.gameObject)
+            if (collider.gameObject != this.gameObject && !collider.GetComponent<Character>().isDead)
             {
                 filteredColliders.Add(collider);
             }

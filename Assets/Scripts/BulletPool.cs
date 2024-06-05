@@ -1,34 +1,50 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;  
+
 public class BulletPool : MonoBehaviour
 {
     public static BulletPool Instance;
-    [SerializeField] private GameObject bulletPrefab;
-    [SerializeField] private int poolSize = 20;
-    private List<GameObject> bullets;
+    [SerializeField] private int poolSize = 5;
+    [SerializeField] private Dictionary<Character, List<GameObject>> characterBulletPools;
+    public Vector3 scale;
 
     private void Awake()
     {
         Instance = this;
-        bullets = new List<GameObject>();
+        characterBulletPools = new Dictionary<Character, List<GameObject>>();
 
-        for (int i = 0; i < poolSize; i++)
-        {
-            GameObject bullet = Instantiate(bulletPrefab);
-            bullet.SetActive(false);
-            bullets.Add(bullet);
-        }
     }
 
-    public GameObject GetBullet()
+    //pool for each character
+    public void CreatePool(Character character, GameObject bulletPrefab)
     {
-        foreach (GameObject bullet in bullets)
+        Debug.Log("creating");
+        if (!characterBulletPools.ContainsKey(character))
         {
-            if (!bullet.activeInHierarchy)
+            List<GameObject> bulletPool = new List<GameObject>();
+            for (int i = 0; i < poolSize; i++)
             {
-                bullet.SetActive(true);
-                return bullet;
+                GameObject bullet = Instantiate(bulletPrefab);
+                bullet.SetActive(false);
+                bulletPool.Add(bullet);
+            }
+            characterBulletPools.Add(character, bulletPool);
+        }
+        scale = bulletPrefab.transform.localScale;
+    }
+
+    public GameObject GetBullet(Character character)
+    {
+        if (characterBulletPools.ContainsKey(character))
+        {
+            foreach (GameObject bullet in characterBulletPools[character])
+            {
+                if (!bullet.activeInHierarchy)
+                {
+                    bullet.SetActive(true);
+                    return bullet;
+                }
             }
         }
         return null;
@@ -38,16 +54,18 @@ public class BulletPool : MonoBehaviour
     {
         bullet.SetActive(false);
     }
-    
-    // Kiểm tra xem có đạn nào đang hoạt động bởi attacker này hay không
+
     public bool IsBulletActive(Character attacker)
     {
-        foreach (GameObject bullet in bullets)
+        if (characterBulletPools.ContainsKey(attacker))
         {
-            Bullet bulletComponent = bullet.GetComponent<Bullet>();
-            if (bullet.activeInHierarchy && bulletComponent.attacker == attacker)
+            foreach (GameObject bullet in characterBulletPools[attacker])
             {
-                return true;
+                Bullet bulletComponent = bullet.GetComponent<Bullet>();
+                if (bullet.activeInHierarchy && bulletComponent.attacker == attacker)
+                {
+                    return true;
+                }
             }
         }
         return false;

@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a351f2b6155e74b20b8febb22db3813c, type: 3}
+  m_Name: WeaponData
+  m_EditorClassIdentifier: 
+  weaponList:
+  - weaponType: 0
+    weapon:
+      gun: {fileID: 3156978846926404867, guid: ac715c9708bb94805acbc1a3019be2fa, type: 3}
+      bullet: {fileID: 3156978846926404867, guid: ac715c9708bb94805acbc1a3019be2fa, type: 3}
+    price: 100
+  - weaponType: 0
+    weapon:
+      gun: {fileID: 8267625211698420981, guid: c92fb3c9b8a1b44b38abb4bf476a139c, type: 3}
+      bullet: {fileID: 8267625211698420981, guid: c92fb3c9b8a1b44b38abb4bf476a139c, type: 3}
+    price: 100
+  - weaponType: 0
+    weapon:
+      gun: {fileID: 6511858493402134245, guid: 8ce0da899c76a465bb6365b78c971285, type: 3}
+      bullet: {fileID: 6511858493402134245, guid: 8ce0da899c76a465bb6365b78c971285, type: 3}
+    price: 0
+  - weaponType: 0
+    weapon:
+      gun: {fileID: 362137616735914780, guid: 128ca77c19d5b435aa4d7526705aa300, type: 3}
+      bullet: {fileID: 362137616735914780, guid: 128ca77c19d5b435aa4d7526705aa300, type: 3}
+    price: 0
+  - weaponType: 0
+    weapon:
+      gun: {fileID: 5267689243999776171, guid: d85692b345bb24d549d3a4e8f01300fb, type: 3}
+      bullet: {fileID: 5267689243999776171, guid: d85692b345bb24d549d3a4e8f01300fb, type: 3}
+    price: 0
+  - weaponType: 0
+    weapon:
+      gun: {fileID: 7231383130076873581, guid: f6bb787373fae42a28573a48042be936, type: 3}
+      bullet: {fileID: 7231383130076873581, guid: f6bb787373fae42a28573a48042be936, type: 3}
+    price: 0
+  - weaponType: 0
+    weapon:
+      gun: {fileID: 4569114147625522867, guid: ae66e3d4035f941179ab42c20b1bdfa5, type: 3}
+      bullet: {fileID: 4569114147625522867, guid: ae66e3d4035f941179ab42c20b1bdfa5, type: 3}
+    price: 0
+  - weaponType: 0
+    weapon:
+      gun: {fileID: 187254405859972868, guid: ea18301a8384041b49445979edbb1550, type: 3}
+      bullet: {fileID: 187254405859972868, guid: ea18301a8384041b49445979edbb1550, type: 3}
+    price: 0
+  - weaponType: 0
+    weapon:
+      gun: {fileID: 2688547913124262168, guid: 2b0fbdb1dbfa34f97856140216e24e60, type: 3}
+      bullet: {fileID: 2688547913124262168, guid: 2b0fbdb1dbfa34f97856140216e24e60, type: 3}
+    price: 0
+  - weaponType: 0
+    weapon:
+      gun: {fileID: 4339586279122964821, guid: 39b5f08a4574c4911a7decf9badea802, type: 3}
+      bullet: {fileID: 4339586279122964821, guid: 39b5f08a4574c4911a7decf9badea802, type: 3}
+    price: 0
+  - weaponType: 0
+    weapon:
+      gun: {fileID: 4311063824449088501, guid: 286268e4d92be4533ba72a4e3bc82ec3, type: 3}
+      bullet: {fileID: 4311063824449088501, guid: 286268e4d92be4533ba72a4e3bc82ec3, type: 3}
+    price: 0

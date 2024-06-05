@@ -34,7 +34,6 @@ public class Bullet : MonoBehaviour
         if (distanceTraveled >= maxDistance)
         {
             BulletPool.Instance.ReturnBullet(gameObject);
-            transform.localScale = new Vector3(50,50,50);
         }
     }
 
@@ -43,7 +42,7 @@ public class Bullet : MonoBehaviour
         if (other.tag == "Character")
         {
             victim = other.GetComponent<Character>(); 
-            Debug.Log("Attacker: " + attacker.name + " hit Victim: " + victim.name);
+                // Debug.Log("Attacker: " + attacker.name + " hit Victim: " + victim.name);
             if(!CheckSameCharacter())
             {
                 victim.isDead = true;

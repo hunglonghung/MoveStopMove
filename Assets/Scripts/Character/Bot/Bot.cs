@@ -14,6 +14,7 @@ public class Bot : Character
         ChangeState(new BotIdleState());
         SetWeapon(Weapon);
         SetSkin(Skin); 
+        BulletPool.Instance.CreatePool(this, Weapon.GetBullet(0)); 
     }
 
 
@@ -27,12 +28,20 @@ public class Bot : Character
 
     public void MoveToRandomPosition()
     {
-        Vector3 randomDirection = Random.insideUnitSphere * patrolRadius; 
-        randomDirection += transform.position;
-
+        Vector3 randomDirection;
         NavMeshHit navHit;
-        NavMesh.SamplePosition(randomDirection, out navHit, patrolRadius, -1); 
-        agent.SetDestination(navHit.position); 
+        bool validPositionFound = false;
+        while (!validPositionFound)
+        {
+            randomDirection = Random.insideUnitSphere * patrolRadius;
+            randomDirection += transform.position;
+            if (NavMesh.SamplePosition(randomDirection, out navHit, patrolRadius, -1))
+            {
+                validPositionFound = true; 
+                agent.SetDestination(navHit.position);
+            }
+        }
+       
     }
 
     public bool CheckPathPending()

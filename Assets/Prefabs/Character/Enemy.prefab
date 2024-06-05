@@ -424,19 +424,22 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   target: {fileID: 0}
-  scanRadius: 10
   MoveSpeed: 0
   MoveDirection: {x: 0, y: 0, z: 0}
+  KillCount: 0
+  Range: 10
+  SizeMultiplier: 1
   Skin: {fileID: 11400000, guid: 2a33099e631f940bf83a0ed597e9aa82, type: 2}
+  Weapon: {fileID: 11400000, guid: 93831032f5ac1463387866397e026ba0, type: 2}
   CharacterSkin: {fileID: 4596437952122117705}
   Hand: {fileID: 4968668395240909984}
-  Weapon: {fileID: 362137616735914780, guid: 128ca77c19d5b435aa4d7526705aa300, type: 3}
+  Gun: {fileID: 0}
   Pants: {fileID: 1608628916320992354}
   PantsMaterial: {fileID: 0}
   Head: {fileID: 8076340582685595505}
   Hat: {fileID: 0}
   Color: {r: 0, g: 0, b: 0, a: 0}
-  bulletSpeed: 10
+  BulletSpeed: 5
   CurrentBullet: {fileID: 0}
   BotSpawner: {fileID: 5117785586515202390, guid: 1c68ae5f1d0eb4777bd1215ea07ab77c, type: 3}
   patrolRadius: 20

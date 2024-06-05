@@ -4,11 +4,15 @@ using System.Collections.Generic;
 [CreateAssetMenu(fileName = "WeaponData", menuName = "ScriptableObject/WeaponData", order = 0)]
 public class WeaponData : ScriptableObject
 {
-    [SerializeField] List<WeaponItem> weaponList;
+    [SerializeField] public List<WeaponItem> weaponList;
 
-    public Weapon GetWeapon(WeaponType wpType)
+    public GameObject GetGun(int index)
     {
-        return weaponList[(int)wpType].weapon;
+        return weaponList[index].weapon.gun;
+    }
+    public GameObject GetBullet(int index)
+    {
+        return weaponList[index].weapon.bullet;
     }
 }
 
@@ -17,19 +21,21 @@ public class WeaponItem
 {
     public WeaponType weaponType;
     public Weapon weapon;
-    public string name;
     public int price;
 }
 
 public enum WeaponType
 {
-    normal,
-    travelBack
+    vertical,
+    horizontal,
+    travelBack,
+    straight,
+
 }
 
+[System.Serializable]
 public class Weapon
 {
-    public string weaponName;
-    public int ammo;
-    public float reloadTime;
+    public GameObject gun;
+    public GameObject bullet;
 }

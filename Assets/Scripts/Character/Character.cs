@@ -26,9 +26,10 @@ public class Character : MonoBehaviour
     [SerializeField] public float SizeMultiplier = 1f;
     [Header("Skin and Weapon")]
     [SerializeField] public SkinData Skin;
+    [SerializeField] public WeaponData Weapon;
     [SerializeField] public GameObject CharacterSkin;
     [SerializeField] public GameObject Hand;
-    [SerializeField] public GameObject Weapon;
+    [SerializeField] public GameObject Gun;
     [SerializeField] public GameObject Pants;
     [SerializeField] public Material PantsMaterial;
     [SerializeField] public GameObject Head;
@@ -74,7 +75,8 @@ public class Character : MonoBehaviour
     {
         ChangeState(new PlayerIdleState());
         SetWeapon(Weapon);
-        SetSkin(Skin); 
+        SetSkin(Skin);
+        BulletPool.Instance.CreatePool(this, Weapon.GetBullet(0)); 
     }
     
     public void ChangeAnim(string animName)
@@ -98,11 +100,11 @@ public class Character : MonoBehaviour
     {
         if (!BulletPool.Instance.IsBulletActive(this))
         {
-            CurrentBullet = BulletPool.Instance.GetBullet();
+            CurrentBullet = BulletPool.Instance.GetBullet(this);
             if (CurrentBullet != null)
             {
                 CurrentBullet.transform.position = gameObject.transform.position;
-                CurrentBullet.transform.localScale = new Vector3(50,50,50) * SizeMultiplier;
+                CurrentBullet.transform.localScale = BulletPool.Instance.scale * SizeMultiplier;
                 CurrentBullet.transform.position += Vector3.up * SizeMultiplier;
                 Vector3 bulletDirection = (target.transform.position - gameObject.transform.position).normalized;
                 CurrentBullet.GetComponent<Bullet>().OnInit(bulletDirection, BulletSpeed, this, Range); 
@@ -111,10 +113,15 @@ public class Character : MonoBehaviour
     }
 
     //Set Weapon
-    public void SetWeapon(GameObject Weapon)
+    public void SetWeapon(WeaponData weaponData)
     {
-        GameObject characterWeapon = Instantiate(Weapon, Hand.transform.position, Quaternion.identity, Hand.transform);
-        characterWeapon.transform.rotation = Quaternion.Euler(180, 90, 0);
+        int randomIndex = Random.Range(0, weaponData.weaponList.Count);
+        Gun = weaponData.GetGun(randomIndex);
+        if(Gun != null)
+        {   
+            GameObject characterWeapon = Instantiate(Gun, Hand.transform.position, Quaternion.identity, Hand.transform);
+            characterWeapon.transform.rotation = Quaternion.Euler(180, 90, 0);
+        }
     }
 
     //Set Skin
@@ -186,7 +193,6 @@ public class Character : MonoBehaviour
     public bool CheckWin()
     {
         int enemyRemaining = BotSpawner.UnspawnedBotList.Count + BotSpawner.SpawnedBotList.Count ;
-        Debug.Log(enemyRemaining);
         if(enemyRemaining == 0) return true;
         else return false;
     }

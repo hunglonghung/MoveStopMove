@@ -26,7 +26,7 @@ public class BotIdleState : IState<Character>
             {
                 t.ChangeState(new BotRunState());
             } 
-            else if(t.CheckTarget(t.hitColliders) >= 1 && !BulletPool.Instance.IsBulletActive(t))
+            else if(t.CheckTarget(t.hitColliders) >= 1 && !BulletPool.Instance.IsBulletActive(t.WeaponType,t))
             {
                 t.ChangeState(new BotAttackState());
             } 

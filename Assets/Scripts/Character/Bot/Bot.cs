@@ -14,7 +14,7 @@ public class Bot : Character
         ChangeState(new BotIdleState());
         SetWeapon(Weapon);
         SetSkin(Skin); 
-        BulletPool.Instance.CreatePool(this, Weapon.GetBullet(0)); 
+        BulletPool.Instance.CreatePool(WeaponType, Weapon.GetBulletByWeaponType(WeaponType)); 
     }
 
 

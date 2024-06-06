@@ -1,26 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;  
+using System.Net;
+using UnityEngine;
 
 public class BulletPool : MonoBehaviour
 {
     public static BulletPool Instance;
     [SerializeField] private int poolSize = 5;
-    [SerializeField] private Dictionary<Character, List<GameObject>> characterBulletPools;
-    public Vector3 scale;
+    private Dictionary<WeaponType, List<GameObject>> characterBulletPools;
+    private Dictionary<WeaponType, Vector3> bulletOriginalScales;
 
     private void Awake()
     {
         Instance = this;
-        characterBulletPools = new Dictionary<Character, List<GameObject>>();
-
+        characterBulletPools = new Dictionary<WeaponType, List<GameObject>>();
+        bulletOriginalScales = new Dictionary<WeaponType, Vector3>();
     }
 
-    //pool for each character
-    public void CreatePool(Character character, GameObject bulletPrefab)
+    //pool for each weapon type + original size
+    public void CreatePool(WeaponType wpType, GameObject bulletPrefab)
     {
-        Debug.Log("creating");
-        if (!characterBulletPools.ContainsKey(character))
+        // Debug.Log("creating");
+        if (!characterBulletPools.ContainsKey(wpType))
         {
             List<GameObject> bulletPool = new List<GameObject>();
             for (int i = 0; i < poolSize; i++)
@@ -29,20 +30,27 @@ public class BulletPool : MonoBehaviour
                 bullet.SetActive(false);
                 bulletPool.Add(bullet);
             }
-            characterBulletPools.Add(character, bulletPool);
+            characterBulletPools.Add(wpType, bulletPool);
         }
-        scale = bulletPrefab.transform.localScale;
+        if (!bulletOriginalScales.ContainsKey(wpType))
+        {
+            bulletOriginalScales[wpType] = bulletPrefab.transform.localScale;
+        }
+
     }
 
-    public GameObject GetBullet(Character character)
+    // Set bullet
+    public GameObject GetBullet(WeaponType weaponType)
     {
-        if (characterBulletPools.ContainsKey(character))
+        if (characterBulletPools.ContainsKey(weaponType))
         {
-            foreach (GameObject bullet in characterBulletPools[character])
+            // Debug.Log("wptype: " + weaponType + "list: " + characterBulletPools[weaponType] );
+            foreach (GameObject bullet in characterBulletPools[weaponType])
             {
                 if (!bullet.activeInHierarchy)
                 {
                     bullet.SetActive(true);
+                    // Debug.Log("Wptype:" + weaponType + "bullet:" + bullet);
                     return bullet;
                 }
             }
@@ -50,19 +58,23 @@ public class BulletPool : MonoBehaviour
         return null;
     }
 
+
     public void ReturnBullet(GameObject bullet)
     {
         bullet.SetActive(false);
     }
 
-    public bool IsBulletActive(Character attacker)
+    //check if bullet still there
+    public bool IsBulletActive(WeaponType weaponType, Character character)
     {
-        if (characterBulletPools.ContainsKey(attacker))
+        if (characterBulletPools.ContainsKey(weaponType))
         {
-            foreach (GameObject bullet in characterBulletPools[attacker])
+            foreach (GameObject bullet in characterBulletPools[weaponType])
             {
                 Bullet bulletComponent = bullet.GetComponent<Bullet>();
-                if (bullet.activeInHierarchy && bulletComponent.attacker == attacker)
+                if (bullet.activeInHierarchy && 
+                bulletComponent.weaponType == weaponType
+                && bulletComponent.attacker == character)
                 {
                     return true;
                 }
@@ -70,4 +82,31 @@ public class BulletPool : MonoBehaviour
         }
         return false;
     }
+
+    // Get original scale of prefab
+    public Vector3 GetOriginalScale(WeaponType weaponType)
+    {
+        if (bulletOriginalScales.ContainsKey(weaponType))
+        {
+            return bulletOriginalScales[weaponType];
+        }
+        return Vector3.one * 20;
+    }
+    // public void LogDictionary()
+    // {
+    //     if (characterBulletPools == null || characterBulletPools.Count == 0)
+    //     {
+    //         Debug.Log("BulletPool is empty.");
+    //         return;
+    //     }
+
+    //     foreach (var kvp in characterBulletPools)
+    //     {
+    //         foreach (var bullet in kvp.Value)
+    //         {
+    //             Debug.Log($"WeaponType: {kvp.Key}, Bullet Count: {kvp.Value.Count} Bullet: {bullet.name}, Active: {bullet.activeInHierarchy}");
+    //         }
+    //     }
+    // }
+
 }

@@ -22,7 +22,7 @@ public class PlayerIdleState : IState<Character>
             ((Player)t).GetMoveDirection();
             ((Player)t).objectScan();
             if(((Player)t).GetInput()) t.ChangeState(new PlayerRunState());
-            else if(t.CheckTarget(t.hitColliders) >=1 && !BulletPool.Instance.IsBulletActive(t)) t.ChangeState(new PlayerAttackState());
+            else if(t.CheckTarget(t.hitColliders) >=1 && !BulletPool.Instance.IsBulletActive(t.WeaponType,t)) t.ChangeState(new PlayerAttackState());
         }
         
     }

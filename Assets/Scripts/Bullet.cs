@@ -13,14 +13,16 @@ public class Bullet : MonoBehaviour
     private float maxDistance;
     public Character attacker;
     public Character victim; 
+    public WeaponType weaponType;
 
-    public void OnInit(Vector3 bulletDirection, float bulletSpeed, Character character, float scanRadius)
+    public void OnInit(Vector3 bulletDirection, float bulletSpeed, Character character, float scanRadius, WeaponType weapon)
     {
         direction = bulletDirection;
         speed = bulletSpeed;
         attacker = character; 
         maxDistance = scanRadius;
         distanceTraveled = 0f;
+        weaponType = weapon;
         transform.rotation = Quaternion.LookRotation(direction);
         transform.Rotate(0,100,0);
     }
@@ -42,7 +44,7 @@ public class Bullet : MonoBehaviour
         if (other.tag == "Character")
         {
             victim = other.GetComponent<Character>(); 
-                // Debug.Log("Attacker: " + attacker.name + " hit Victim: " + victim.name);
+            // Debug.Log("Attacker: " + attacker.name + " hit Victim: " + victim.name);
             if(!CheckSameCharacter())
             {
                 victim.isDead = true;

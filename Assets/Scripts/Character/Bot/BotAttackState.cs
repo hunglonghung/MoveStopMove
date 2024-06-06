@@ -20,7 +20,7 @@ public class BotAttackState : IState<Character>
             t.objectScan();
             ((Bot)t).StopMoving();
             AnimatorStateInfo stateInfo = t.anim.GetCurrentAnimatorStateInfo(0);
-            if(t.CheckTarget(t.hitColliders) == 0 || BulletPool.Instance.IsBulletActive(t))
+            if(t.CheckTarget(t.hitColliders) == 0 || BulletPool.Instance.IsBulletActive(t.WeaponType,t))
             {
                 t.ChangeState(new BotIdleState());
             }

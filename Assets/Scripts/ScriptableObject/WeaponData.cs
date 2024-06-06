@@ -5,15 +5,29 @@ using System.Collections.Generic;
 public class WeaponData : ScriptableObject
 {
     [SerializeField] public List<WeaponItem> weaponList;
+    public WeaponType GetWeaponType(int index)
+    {
+        return weaponList[index].weaponType;
+    }
 
     public GameObject GetGun(int index)
     {
         return weaponList[index].weapon.gun;
     }
+    public GameObject GetGunByWeaponType(WeaponType wptype)
+    {
+        return weaponList[(int)wptype].weapon.gun;
+    }
     public GameObject GetBullet(int index)
     {
         return weaponList[index].weapon.bullet;
     }
+    public GameObject GetBulletByWeaponType(WeaponType wptype)
+    {
+        Debug.Log(wptype + " and " + (int)wptype + " and " + weaponList[(int)wptype].weapon.bullet);
+        return weaponList[(int)wptype].weapon.bullet;
+    }
+    
 }
 
 [System.Serializable]
@@ -24,12 +38,27 @@ public class WeaponItem
     public int price;
 }
 
-public enum WeaponType
+public enum ProjectileType
 {
     vertical,
     horizontal,
     travelBack,
     straight,
+}
+public enum WeaponType
+{
+    Z = 0,
+    Knife = 1,
+    Hammer = 2,
+    FlatLolipop = 3,
+    Icecream = 4,
+    Candycane = 5,
+    SphereLolipop = 6,
+    Boomerang = 7,
+    Axe = 8,
+    Pickaxe = 9,
+    Arrow = 10,
+
 
 }
 

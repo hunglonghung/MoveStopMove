@@ -27,6 +27,7 @@ public class Character : MonoBehaviour
     [Header("Skin and Weapon")]
     [SerializeField] public SkinData Skin;
     [SerializeField] public WeaponData Weapon;
+    [SerializeField] public WeaponType WeaponType;
     [SerializeField] public GameObject CharacterSkin;
     [SerializeField] public GameObject Hand;
     [SerializeField] public GameObject Gun;
@@ -54,6 +55,7 @@ public class Character : MonoBehaviour
         if (currentState == null) return;
         if (isWin) ChangeState(new PlayerWinState());
         currentState.OnExecute(this);
+        // BulletPool.Instance.LogDictionary();
     }
     
     public void ChangeState(IState<Character> state)
@@ -76,7 +78,6 @@ public class Character : MonoBehaviour
         ChangeState(new PlayerIdleState());
         SetWeapon(Weapon);
         SetSkin(Skin);
-        BulletPool.Instance.CreatePool(this, Weapon.GetBullet(0)); 
     }
     
     public void ChangeAnim(string animName)
@@ -98,17 +99,22 @@ public class Character : MonoBehaviour
 
     public void Fire()
     {
-        if (!BulletPool.Instance.IsBulletActive(this))
+        if (!BulletPool.Instance.IsBulletActive(WeaponType,this))
         {
-            CurrentBullet = BulletPool.Instance.GetBullet(this);
-            if (CurrentBullet != null)
-            {
-                CurrentBullet.transform.position = gameObject.transform.position;
-                CurrentBullet.transform.localScale = BulletPool.Instance.scale * SizeMultiplier;
-                CurrentBullet.transform.position += Vector3.up * SizeMultiplier;
-                Vector3 bulletDirection = (target.transform.position - gameObject.transform.position).normalized;
-                CurrentBullet.GetComponent<Bullet>().OnInit(bulletDirection, BulletSpeed, this, Range); 
-            }
+            BulletSpawn();
+        }
+    }
+    public void BulletSpawn()
+    {
+        CurrentBullet = BulletPool.Instance.GetBullet(WeaponType);
+        if (CurrentBullet != null)
+        {
+            CurrentBullet.transform.position = gameObject.transform.position;
+            Vector3 originalScale = BulletPool.Instance.GetOriginalScale(WeaponType);
+            CurrentBullet.transform.localScale = originalScale * SizeMultiplier;
+            CurrentBullet.transform.position += Vector3.up * SizeMultiplier;
+            Vector3 bulletDirection = (target.transform.position - gameObject.transform.position).normalized;
+            CurrentBullet.GetComponent<Bullet>().OnInit(bulletDirection, BulletSpeed, this, Range, WeaponType); 
         }
     }
 
@@ -117,11 +123,14 @@ public class Character : MonoBehaviour
     {
         int randomIndex = Random.Range(0, weaponData.weaponList.Count);
         Gun = weaponData.GetGun(randomIndex);
+        WeaponType = weaponData.GetWeaponType(randomIndex);
         if(Gun != null)
         {   
             GameObject characterWeapon = Instantiate(Gun, Hand.transform.position, Quaternion.identity, Hand.transform);
             characterWeapon.transform.rotation = Quaternion.Euler(180, 90, 0);
         }
+        // Debug.Log(WeaponType + "and" + Weapon.GetBulletByWeaponType(WeaponType));
+        BulletPool.Instance.CreatePool(WeaponType, Weapon.GetBulletByWeaponType(WeaponType));
     }
 
     //Set Skin

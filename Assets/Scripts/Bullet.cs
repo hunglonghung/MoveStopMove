@@ -14,6 +14,7 @@ public class Bullet : MonoBehaviour
     public Character attacker;
     public Character victim; 
     public WeaponType weaponType;
+    [SerializeField] private float rotationValue = 10f;
 
     public void OnInit(Vector3 bulletDirection, float bulletSpeed, Character character, float scanRadius, WeaponType weapon)
     {
@@ -24,12 +25,12 @@ public class Bullet : MonoBehaviour
         distanceTraveled = 0f;
         weaponType = weapon;
         transform.rotation = Quaternion.LookRotation(direction);
-        transform.Rotate(0,100,0);
+        transform.Rotate(90,100,0);
     }
 
     private void Update()
     {
-        transform.Rotate(0,0,20f);
+        transform.Rotate(0,0,rotationValue);
         float distanceToTravel = speed * Time.deltaTime;
         transform.Translate(direction * distanceToTravel, Space.World);
         distanceTraveled += distanceToTravel;

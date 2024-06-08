@@ -13,17 +13,16 @@ public class PlayerIdleState : IState<Character>
 
     public void OnExecute(Character t)
     {
-        if(t.isDead) 
+
+        ((Player)t).GetMoveDirection();
+        if(((Player)t).GetInput()) t.ChangeState(new PlayerRunState());
+        else if(t.CheckTarget(t.hitColliders) >=1 && !BulletPool.Instance.IsBulletActive(t.WeaponType,t))
         {
-            t.ChangeState(new PlayerLoseState());
-        }
-        else
-        {
-            ((Player)t).GetMoveDirection();
-            ((Player)t).objectScan();
-            if(((Player)t).GetInput()) t.ChangeState(new PlayerRunState());
-            else if(t.CheckTarget(t.hitColliders) >=1 && !BulletPool.Instance.IsBulletActive(t.WeaponType,t)) t.ChangeState(new PlayerAttackState());
-        }
+            ((Player)t).SetTarget();
+            t.ChangeState(new PlayerAttackState());
+        } 
+            
+        
         
     }
 

@@ -10,11 +10,23 @@ public class Player : Character
     [SerializeField] public FloatingJoystick FloatingJoystick;
     [Header("Camera")]
     [SerializeField] public CinemachineVirtualCamera PlayerCamera;
+    [Header("Target")]
+    [SerializeField] public GameObject TargetPrefab;
+    private GameObject targetObject;
 
     public override void Start()
     {
         base.Start();
+        SetTarget();
         CameraDistanceInit(25f);
+    }
+    public override void Update()
+    {
+        base.Update();
+        objectScan();
+        SetTarget();
+        UpdateTargetPosition();
+        if(isDead) ChangeState(new PlayerLoseState());
     }
     //Move Direction
     public void GetMoveDirection()
@@ -39,6 +51,37 @@ public class Player : Character
             transform.rotation = Quaternion.LookRotation(direction);
         }
     }
+    //SetTarget
+    public void SetTarget()
+    {
+        if (target != null)
+        {
+            targetObject = TargetPool.Instance.GetTarget();
+            targetObject.transform.position = target.transform.position;
+            targetObject.transform.rotation = Quaternion.Euler(90, 0, 0);
+        }
+    }
+
+    public void DestroyTarget()
+    {
+        if (targetObject != null)
+        {
+            TargetPool.Instance.ReturnTarget();
+        }
+    }
+
+    private void UpdateTargetPosition()
+    {
+        if (target != null && targetObject != null )
+        {
+            targetObject.transform.position = target.transform.position;
+        }
+        else TargetPool.Instance.ReturnTarget();
+    }
+
+
+
+    //UI
     public void DisableJoystick()
     {
         FloatingJoystick.gameObject.SetActive(false);

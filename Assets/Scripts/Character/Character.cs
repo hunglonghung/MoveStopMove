@@ -49,7 +49,7 @@ public class Character : MonoBehaviour
         OnInit();
     }
 
-    void Update()
+    public virtual void Update()
     {
         isWin = CheckWin();
         if (currentState == null) return;
@@ -163,6 +163,8 @@ public class Character : MonoBehaviour
     {
         hitColliders = Physics.OverlapSphere(transform.position, Range, layer);
         hitColliders = FilterSelf(hitColliders);
+        if (hitColliders.Length > 0) target = hitColliders[hitColliders.Count()-1].gameObject;
+        else target = null;
     }
 
     private Collider[] FilterSelf(Collider[] colliders)
@@ -187,7 +189,6 @@ public class Character : MonoBehaviour
             {
                 targetCount++;
             }
-            target = hitColliders[0].gameObject;
         }
         return targetCount;
     }

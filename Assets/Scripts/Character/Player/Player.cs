@@ -59,6 +59,7 @@ public class Player : Character
             targetObject = TargetPool.Instance.GetTarget();
             targetObject.transform.position = target.transform.position;
             targetObject.transform.rotation = Quaternion.Euler(90, 0, 0);
+            targetObject.transform.localScale = target.transform.localScale; 
         }
     }
 

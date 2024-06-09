@@ -51,7 +51,6 @@ public class Character : MonoBehaviour
 
     public virtual void Update()
     {
-        isWin = CheckWin();
         if (currentState == null) return;
         if (isWin) ChangeState(new PlayerWinState());
         currentState.OnExecute(this);
@@ -130,7 +129,7 @@ public class Character : MonoBehaviour
             characterWeapon.transform.rotation = Quaternion.Euler(180, 90, 0);
         }
         // Debug.Log(WeaponType + "and" + Weapon.GetBulletByWeaponType(WeaponType));
-        BulletPool.Instance.CreatePool(WeaponType, Weapon.GetBulletByWeaponType(WeaponType));
+        BulletPool.Instance.CreateBulletPool(WeaponType, Weapon.GetBulletByWeaponType(WeaponType));
     }
 
     //Set Skin
@@ -194,18 +193,13 @@ public class Character : MonoBehaviour
     }
 
     //Destroy
-    public void OnDestroy()
+    public void OnDeactive()
     {
-        Destroy(gameObject);
+        BotSpawner.Instance.ReturnBot(this.gameObject);
     }
 
-    //Win condition
-    public bool CheckWin()
-    {
-        int enemyRemaining = BotSpawner.UnspawnedBotList.Count + BotSpawner.SpawnedBotList.Count ;
-        if(enemyRemaining == 0) return true;
-        else return false;
-    }
+
+
 
     
 

@@ -9,12 +9,13 @@ public class Bot : Character
     [SerializeField] public NavMeshAgent agent;
     public override void OnInit()
     {
+        isDead = false;
         agent = GetComponent<NavMeshAgent>(); 
         MoveToRandomPosition(); 
         ChangeState(new BotIdleState());
         SetWeapon(Weapon);
         SetSkin(Skin); 
-        BulletPool.Instance.CreatePool(WeaponType, Weapon.GetBulletByWeaponType(WeaponType)); 
+        BulletPool.Instance.CreateBulletPool(WeaponType, Weapon.GetBulletByWeaponType(WeaponType)); 
     }
 
 

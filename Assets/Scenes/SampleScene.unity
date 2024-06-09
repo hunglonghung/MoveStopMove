@@ -1170,7 +1170,7 @@ Transform:
   m_GameObject: {fileID: 345257364}
   serializedVersion: 2
   m_LocalRotation: {x: 0.25949654, y: -0.001536433, z: 0.00041296086, w: 0.96574277}
-  m_LocalPosition: {x: -14.562908, y: 14.034021, z: -32.428913}
+  m_LocalPosition: {x: -14.554648, y: 15.537666, z: -35.024868}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2555,7 +2555,7 @@ Transform:
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
   m_LocalRotation: {x: 0.25949654, y: -0.001536433, z: 0.00041296086, w: 0.96574277}
-  m_LocalPosition: {x: -14.562908, y: 14.034021, z: -32.428913}
+  m_LocalPosition: {x: -14.554648, y: 15.537666, z: -35.024868}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3274,7 +3274,7 @@ MonoBehaviour:
   m_TargetMovementOnly: 1
   m_ScreenX: 0.5
   m_ScreenY: 0.5
-  m_CameraDistance: 28
+  m_CameraDistance: 31
   m_DeadZoneWidth: 0
   m_DeadZoneHeight: 0
   m_DeadZoneDepth: 0
@@ -6778,7 +6778,7 @@ PrefabInstance:
       objectReference: {fileID: 1771102883}
     - target: {fileID: 5117785586515202390, guid: 1c68ae5f1d0eb4777bd1215ea07ab77c, type: 3}
       propertyPath: minDistance
-      value: 0
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5117785586515202390, guid: 1c68ae5f1d0eb4777bd1215ea07ab77c, type: 3}
       propertyPath: spawnRadius
@@ -6806,9 +6806,9 @@ SceneRoots:
   - {fileID: 2826966250776077164}
   - {fileID: 1371071107}
   - {fileID: 233338765}
-  - {fileID: 8569714482744254959}
   - {fileID: 290501969}
   - {fileID: 1352606783}
   - {fileID: 73216377177992369}
   - {fileID: 1603422895}
   - {fileID: 1897162192}
+  - {fileID: 8569714482744254959}

@@ -17,8 +17,7 @@ public class BotLoseState : IState<Character>
         AnimatorStateInfo stateInfo = t.anim.GetCurrentAnimatorStateInfo(0);
         if (stateInfo.IsName("Dead") && stateInfo.normalizedTime >= 1)
         {
-            ((Bot)t).BotSpawner.SpawnedBotList.Remove(t.gameObject);
-            t.OnDestroy();
+            t.OnDeactive();
             
         }
     }

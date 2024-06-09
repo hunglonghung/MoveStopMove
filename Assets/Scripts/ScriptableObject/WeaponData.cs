@@ -24,7 +24,7 @@ public class WeaponData : ScriptableObject
     }
     public GameObject GetBulletByWeaponType(WeaponType wptype)
     {
-        Debug.Log(wptype + " and " + (int)wptype + " and " + weaponList[(int)wptype].weapon.bullet);
+        // Debug.Log(wptype + " and " + (int)wptype + " and " + weaponList[(int)wptype].weapon.bullet);
         return weaponList[(int)wptype].weapon.bullet;
     }
     

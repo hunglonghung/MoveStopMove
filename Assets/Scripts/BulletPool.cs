@@ -18,7 +18,7 @@ public class BulletPool : MonoBehaviour
     }
 
     //pool for each weapon type + original size
-    public void CreatePool(WeaponType wpType, GameObject bulletPrefab)
+    public void CreateBulletPool(WeaponType wpType, GameObject bulletPrefab)
     {
         // Debug.Log("creating");
         if (!characterBulletPools.ContainsKey(wpType))

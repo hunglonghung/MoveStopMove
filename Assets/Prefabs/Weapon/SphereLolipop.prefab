@@ -14,27 +14,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 77de8014aff37804f92ab58c8817cced, type: 3}
       propertyPath: m_LocalScale.x
-      value: 83.32743
+      value: 53.130405
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 77de8014aff37804f92ab58c8817cced, type: 3}
       propertyPath: m_LocalScale.y
-      value: 83.32743
+      value: 53.130405
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 77de8014aff37804f92ab58c8817cced, type: 3}
       propertyPath: m_LocalScale.z
-      value: 83.32743
+      value: 53.130405
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 77de8014aff37804f92ab58c8817cced, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.000000080332
+      value: 0.00000001882
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 77de8014aff37804f92ab58c8817cced, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.3358
+      value: 7.2637
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 77de8014aff37804f92ab58c8817cced, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1e-15
+      value: -4e-15
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 77de8014aff37804f92ab58c8817cced, type: 3}
       propertyPath: m_LocalRotation.w
@@ -128,3 +128,4 @@ MonoBehaviour:
   attacker: {fileID: 0}
   victim: {fileID: 0}
   weaponType: 0
+  rotationValue: 10

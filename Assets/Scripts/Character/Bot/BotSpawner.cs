@@ -5,35 +5,42 @@ using UnityEngine.AI;
 
 public class BotSpawner : MonoBehaviour
 {
+    public static BotSpawner Instance;
+    [SerializeField] private int poolSize = 20;
+    private int spawnedBotNumber = 0;
+    [SerializeField] private int targetNumber = 50;
+    private List<GameObject> botPools;
     public GameObject botPrefab; 
-    public int numberOfBots = 50;
     public float spawnRadius = 50f;
     public float minDistance = 10f; // prevent dead when spawning
-    [SerializeField] public List<GameObject> UnspawnedBotList = new List<GameObject>();
-    [SerializeField] public List<GameObject> SpawnedBotList = new List<GameObject>();
-    [SerializeField] public Bot Bot;
     [SerializeField] public Player player;
-
-    void Start()
+    private void Awake()
     {
-        for (int i = 0; i < numberOfBots; i++)
+        Instance = this;
+        botPools = new List<GameObject>();
+    }
+    private void Start() 
+    {
+        CreateBotPool();
+    }
+    private void Update() 
+    {
+        SpawnBot();
+        if(spawnedBotNumber == targetNumber && CheckBotRemaining() == 0)
         {
-            UnspawnedBotList.Add(botPrefab);
-        }
-        while(SpawnedBotList.Count <= 20) 
-        {
-            SpawnBot();
+            player.isWin = true;
         }
     }
-
-    void Update() 
+    public void CreateBotPool()
     {
-        if(SpawnedBotList.Count <= 20)
+        for (int i = 0; i < poolSize; i++)
         {
-            SpawnBot();
+            GameObject bot = Instantiate(botPrefab);
+            bot.SetActive(false);
+            botPools.Add(bot);
         }
     }
-    public void SpawnBot()
+    public Vector3 GetValidPosition()
     {
         Vector3 randomPosition;
         bool validPosition;
@@ -43,8 +50,8 @@ public class BotSpawner : MonoBehaviour
             validPosition = true;
             randomPosition = UnityEngine.Random.insideUnitSphere * spawnRadius;
             randomPosition += transform.position;
-            randomPosition.y = 0;
-            foreach (GameObject spawnedBot in SpawnedBotList)
+            randomPosition.y = 2;
+            foreach (GameObject spawnedBot in botPools)
             {
                 if (spawnedBot != null && Vector3.Distance(randomPosition, spawnedBot.transform.position) < minDistance)
                 {
@@ -61,16 +68,34 @@ public class BotSpawner : MonoBehaviour
             validPosition = IsInNavMesh(randomPosition,3);
 
         } while (!validPosition);
+        return randomPosition;
+    }
+    public void SpawnBot()
+    {
 
         // Spawn bot 
-        if(UnspawnedBotList.Count > 0)
+        foreach (GameObject bot in botPools)
         {
-            GameObject bot = Instantiate(UnspawnedBotList[0], randomPosition, Quaternion.identity);
-            bot.GetComponent<Bot>().BotSpawner = this;
-            SpawnedBotList.Add(bot);
-            UnspawnedBotList.RemoveAt(0);
+            if (!bot.activeInHierarchy && spawnedBotNumber < targetNumber)
+            {
+                bot.SetActive(true);
+                bot.GetComponent<Bot>().OnInit();
+                bot.transform.position = GetValidPosition();
+                spawnedBotNumber ++;
+            }
         }
-        
+    }
+    public int CheckBotRemaining()
+    {
+        int botCount = 0;
+        foreach (GameObject bot in botPools)
+        {
+            if (bot.activeInHierarchy)
+            {
+                botCount ++;
+            }
+        }
+        return botCount;
     }
     public bool IsInNavMesh(Vector3 point, float maxDistance)
     {
@@ -80,6 +105,10 @@ public class BotSpawner : MonoBehaviour
             return true; 
         }
         return false; 
+    }
+    public void ReturnBot(GameObject bot)
+    {
+        bot.SetActive(false);
     }
 
 }

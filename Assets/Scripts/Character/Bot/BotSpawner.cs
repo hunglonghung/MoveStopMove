@@ -110,5 +110,4 @@ public class BotSpawner : MonoBehaviour
     {
         bot.SetActive(false);
     }
-
 }

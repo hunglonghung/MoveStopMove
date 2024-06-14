@@ -16,6 +16,8 @@ public class Bot : Character
         SetWeapon(Weapon);
         SetSkin(Skin); 
         BulletPool.Instance.CreateBulletPool(WeaponType, Weapon.GetBulletByWeaponType(WeaponType)); 
+        // GetComponent<Target>().targetColor = Color;
+
     }
 
 

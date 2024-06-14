@@ -22,7 +22,7 @@ public class PlayerRunState : IState<Character>
 
     public void OnExit(Character t)
     {
-
+        
     }
 
 }

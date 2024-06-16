@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public GameState State;
+    public static int Coins = 500;
     public static event Action<GameState> OnGameStateChanged;
     void Awake()
 {
@@ -33,20 +34,28 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     public void UpdateGameState(GameState newState)
     {
+        Debug.Log("old State:" + State);
         State = newState;
+        Debug.Log("new State:" + State);
         switch (newState)
         {
             case GameState.Loading:
                 break;
-            case GameState.MainMenu:
+            case GameState.Home:
                 break;
-            case GameState.Shop:
+            case GameState.WeaponShop:
+                break;
+            case GameState.SkinShop:
+                break;
+            case GameState.GamePlay:
+                Time.timeScale = 0;
                 break;
             case GameState.Settings:
+                Time.timeScale = 0;
                 break;
             case GameState.Win:
                 break;
@@ -60,8 +69,10 @@ public class GameManager : MonoBehaviour
 
     public enum GameState{
         Loading,
-        MainMenu, 
-        Shop,
+        Home, 
+        WeaponShop,
+        SkinShop,
+        GamePlay,
         Settings,
         Win,
         Lose,

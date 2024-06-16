@@ -23,7 +23,7 @@ public class UserData
 
     public UserData()
     {
-        coin = 10000; 
+        coin = 5000; 
         levelNumber = 1; 
         name = "YOU"; 
 
@@ -33,7 +33,7 @@ public class UserData
         currentShieldIndex = 0;
         currentComboSkinIndex = 0;
 
-        weaponState = new List<int>() { 1, 0, 0, 0, 0, 0, 0, 0 };
+        weaponState = new List<int>() { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1};
         hatState = new List<int>() { 0, 0, 0, 0, 0, 0, 0, 0 };
         pantState = new List<int>() { 0, 0, 0, 0, 0, 0, 0, 0 };
         shieldState = new List<int>() { 0, 0, 0 };

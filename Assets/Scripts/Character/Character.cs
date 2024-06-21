@@ -135,10 +135,13 @@ public class Character : MonoBehaviour
     //Set Skin
     public void SetSkin(SkinData skinData)
     {
-        int randomIndex = Random.Range(0, skinData.skinList.Count);
+        int randomSkinIndex = Random.Range(0, skinData.SkinList.Count);
+        int randomHatIndex = Random.Range(0, skinData.HatList.Count);
+        int randomColorIndex = Random.Range(0, skinData.ColorList.Count);
+        int randomPantsIndex = Random.Range(0, skinData.PantsList.Count);
 
         // Set hat
-        Hat = skinData.GetHat(randomIndex);
+        Hat = skinData.GetHat(randomHatIndex).GetHatGameObject();
         if (Hat != null)
         {
             GameObject botHat = Instantiate(Hat, Head.transform.position, Quaternion.identity, Head.transform);
@@ -146,11 +149,11 @@ public class Character : MonoBehaviour
         }
 
         // Set color
-        Color = skinData.GetColor(randomIndex);
+        Color = skinData.GetColor(randomColorIndex);
         CharacterSkin.GetComponent<Renderer>().material.color = Color;
 
         // Set pants material
-        PantsMaterial = skinData.GetPantsMaterial(randomIndex);
+        PantsMaterial = skinData.GetPants(randomPantsIndex).GetPantsMaterial();
         if (PantsMaterial != null)
         {
             Pants.GetComponent<Renderer>().material = PantsMaterial;

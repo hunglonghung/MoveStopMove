@@ -10,7 +10,7 @@ public class HomeManager : MonoBehaviour
     [SerializeField] private GameObject HomePanel;
     [SerializeField] private List<GameObject> soundButton;
     [SerializeField] private TextMeshProUGUI coinText;
-    [SerializeField] private UserData userData;
+    [SerializeField] public UserData user;
     float time;
     private bool isSound = true; 
     void Awake()
@@ -27,17 +27,12 @@ public class HomeManager : MonoBehaviour
     void Start()
     {
         SetCoin();
-        // time = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        // time += Time.deltaTime;
-        // if (time > 10f)
-        // {
-        //     MoveToWeaponShop();
-        // }
+
     }
     public void StartGame()
     {
@@ -45,7 +40,7 @@ public class HomeManager : MonoBehaviour
     }
     public void SetCoin()
     {
-        UserData user = new UserData();
+        user = GameManager.Instance.userDataManager.userData;
         coinText.text = user.coin.ToString();
     }
     public void MoveToWeaponShop()
@@ -64,6 +59,11 @@ public class HomeManager : MonoBehaviour
         {
             soundButton[i].SetActive(isSound);
         }
+    }
+    public void ResetData()
+    {
+        UserDataManager.Instance.ResetUserDataToDefault();
+        SetCoin();
     }
 
 }

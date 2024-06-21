@@ -532,10 +532,10 @@ RectTransform:
   - {fileID: 1758765227}
   m_Father: {fileID: 1599475094}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 954.375, y: -67.579956}
-  m_SizeDelta: {x: 251.25, y: 30}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &39855849
 MonoBehaviour:
@@ -787,10 +787,10 @@ RectTransform:
   - {fileID: 1702079}
   m_Father: {fileID: 1599475094}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 401.875, y: -67.579956}
-  m_SizeDelta: {x: 251.25, y: 30}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &55419206
 MonoBehaviour:
@@ -891,7 +891,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &119528658
 RectTransform:
   m_ObjectHideFlags: 0
@@ -997,9 +997,9 @@ RectTransform:
   - {fileID: 919565517}
   m_Father: {fileID: 2077561897}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 540, y: -123.56003}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 144.7, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &123372033
@@ -1367,9 +1367,9 @@ RectTransform:
   - {fileID: 807837707}
   m_Father: {fileID: 449780464}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 188.33334, y: -123.56003}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 144.7, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &166218653
@@ -1878,9 +1878,9 @@ RectTransform:
   - {fileID: 1855902875}
   m_Father: {fileID: 2077561897}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 188.33334, y: -123.56003}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 144.7, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &225465144
@@ -2309,10 +2309,10 @@ RectTransform:
   - {fileID: 1931584236}
   m_Father: {fileID: 1599475094}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 125.625, y: -67.579956}
-  m_SizeDelta: {x: 251.25, y: 30}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &281398077
 MonoBehaviour:
@@ -2912,7 +2912,7 @@ Transform:
   m_GameObject: {fileID: 345257364}
   serializedVersion: 2
   m_LocalRotation: {x: 0.25949654, y: -0.001536433, z: 0.00041296086, w: 0.96574277}
-  m_LocalPosition: {x: 18.37709, y: 14.034022, z: -32.428913}
+  m_LocalPosition: {x: 18.385351, y: 15.537667, z: -35.02487}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3530,9 +3530,9 @@ RectTransform:
   - {fileID: 1280390815}
   m_Father: {fileID: 1331677041}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 758.7928, y: -15}
   m_SizeDelta: {x: 144.7, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &456440193
@@ -4033,9 +4033,9 @@ RectTransform:
   - {fileID: 1329011349}
   m_Father: {fileID: 449780464}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 891.6667, y: -123.56003}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 144.7, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &507518282
@@ -4915,7 +4915,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &641821517
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6961,9 +6961,9 @@ RectTransform:
   - {fileID: 166283036}
   m_Father: {fileID: 1331677041}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 305.1969, y: -15}
   m_SizeDelta: {x: 144.7, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &933820442
@@ -7135,7 +7135,7 @@ Transform:
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
   m_LocalRotation: {x: 0.25949654, y: -0.001536433, z: 0.00041296086, w: 0.96574277}
-  m_LocalPosition: {x: 18.37709, y: 14.034022, z: -32.428913}
+  m_LocalPosition: {x: 18.385351, y: 15.537667, z: -35.02487}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7699,7 +7699,6 @@ MonoBehaviour:
   coinPurchaseButton: {fileID: 1530238341}
   coinPurchaseButtonText: {fileID: 1975726150}
   videoButton: {fileID: 1478096875}
-  userDataManager: {fileID: 300569361}
   user:
     coin: 5000
     levelNumber: 1
@@ -8547,9 +8546,9 @@ RectTransform:
   - {fileID: 41925352}
   m_Father: {fileID: 1331677041}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 531.9949, y: -15}
   m_SizeDelta: {x: 144.7, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1279880652
@@ -8802,10 +8801,10 @@ RectTransform:
   - {fileID: 1646413770}
   m_Father: {fileID: 1599475094}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 678.125, y: -67.579956}
-  m_SizeDelta: {x: 251.25, y: 30}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1292226630
 MonoBehaviour:
@@ -8945,7 +8944,7 @@ MonoBehaviour:
   m_TargetMovementOnly: 1
   m_ScreenX: 0.5
   m_ScreenY: 0.5
-  m_CameraDistance: 28
+  m_CameraDistance: 31
   m_DeadZoneWidth: 0
   m_DeadZoneHeight: 0
   m_DeadZoneDepth: 0
@@ -10805,9 +10804,9 @@ RectTransform:
   - {fileID: 1216332937}
   m_Father: {fileID: 1331677041}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 78.39897, y: -15}
   m_SizeDelta: {x: 144.7, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1499039832
@@ -12293,9 +12292,9 @@ RectTransform:
   - {fileID: 643901227}
   m_Father: {fileID: 449780464}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 540, y: -123.56003}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 144.7, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1702879374
@@ -12624,9 +12623,9 @@ RectTransform:
   - {fileID: 1101844550}
   m_Father: {fileID: 2077561897}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 891.6667, y: -123.56003}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 144.7, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1755940033
@@ -13740,6 +13739,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   State: 0
+  userDataManager: {fileID: 300569361}
 --- !u!4 &1937975379
 Transform:
   m_ObjectHideFlags: 0
@@ -14289,8 +14289,8 @@ MonoBehaviour:
   - {fileID: 1637549333}
   - {fileID: 1877218432}
   coinText: {fileID: 1738803516}
-  userData:
-    coin: 10000
+  user:
+    coin: 5000
     levelNumber: 1
     name: YOU
     currentWeaponIndex: 0
@@ -14298,7 +14298,7 @@ MonoBehaviour:
     currentPantIndex: 0
     currentShieldIndex: 0
     currentComboSkinIndex: 0
-    weaponState: 0100000000000000000000000000000000000000000000000000000000000000
+    weaponState: 0100000000000000000000000000000000000000000000000000000000000000000000000000000001000000
     hatState: 0000000000000000000000000000000000000000000000000000000000000000
     pantState: 0000000000000000000000000000000000000000000000000000000000000000
     shieldState: 000000000000000000000000

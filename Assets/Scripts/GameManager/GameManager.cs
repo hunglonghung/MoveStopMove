@@ -10,10 +10,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public GameState State;
+    public static int Coins = 500;
     public static event Action<GameState> OnGameStateChanged;
-    [Header("User Data")]
-    [SerializeField] public UserDataManager userDataManager;
-
     void Awake()
 {
     if (Instance == null)
@@ -40,7 +38,9 @@ public class GameManager : MonoBehaviour
     }
     public void UpdateGameState(GameState newState)
     {
+        Debug.Log("old State:" + State);
         State = newState;
+        Debug.Log("new State:" + State);
         switch (newState)
         {
             case GameState.Loading:
@@ -52,6 +52,7 @@ public class GameManager : MonoBehaviour
             case GameState.SkinShop:
                 break;
             case GameState.GamePlay:
+                Time.timeScale = 0;
                 break;
             case GameState.Settings:
                 break;

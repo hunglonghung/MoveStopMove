@@ -34,9 +34,9 @@ public class UserData
         currentComboSkinIndex = 0;
 
         weaponState = new List<int>() { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1};
-        hatState = new List<int>() { 0, 0, 0, 0, 0, 0};
-        pantState = new List<int>() { 0, 0, 0, 0, 0};
-        shieldState = new List<int>() { 0, 0 };
-        comboSkinState = new List<int>() { 0, 0, 0 ,0, 0};
+        hatState = new List<int>() { 0, 0, 0, 0, 0, 0, 0, 0 };
+        pantState = new List<int>() { 0, 0, 0, 0, 0, 0, 0, 0 };
+        shieldState = new List<int>() { 0, 0, 0 };
+        comboSkinState = new List<int>() { 0, 0, 0 };
     }
 }

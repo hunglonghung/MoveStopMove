@@ -27,21 +27,15 @@ public class LoadingManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(time <= 3f)
+        time += Time.deltaTime;
+        if (time > 3f)
         {
-            time += Time.deltaTime;
-        }
-        else
-        {
-            if(GameManager.Instance.State == GameState.Loading)
-            {
-                MoveToHomePanel();
-            }
+            MoveToHomePanel();
         }
     }
     public void MoveToHomePanel()
     {
-        GameManager.Instance.UpdateGameState(GameState.Home);
+        GameManager.Instance.UpdateGameState(GameState.WeaponShop);
     }
 
 }

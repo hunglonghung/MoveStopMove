@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class BotSpawner : MonoBehaviour
 {
     public static BotSpawner Instance;
-    [SerializeField] private int poolSize = 10;
+    [SerializeField] private int poolSize = 5;
     private int spawnedBotNumber = 0;
     [SerializeField] private int targetNumber = 50;
     private List<GameObject> botPools;

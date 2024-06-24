@@ -25,6 +25,7 @@ public class GameplayManager : MonoBehaviour
     void Start()
     {
         SetAliveText();
+        AlivePlayers = 100;
         
     }
     void Update()

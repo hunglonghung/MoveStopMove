@@ -12,6 +12,12 @@ public class UserDataManager : Singleton<UserDataManager>
         LoadUserID();
         LoadUserData();
     }
+    private void CreateUserId()
+    {
+        userID = System.Guid.NewGuid().ToString();
+        PlayerPrefs.SetString("UserID", userID);
+        PlayerPrefs.Save();
+    }
 
     private void LoadUserID()
     {
@@ -21,9 +27,7 @@ public class UserDataManager : Singleton<UserDataManager>
         }
         else
         {
-            userID = System.Guid.NewGuid().ToString();
-            PlayerPrefs.SetString("UserID", userID);
-            PlayerPrefs.Save();
+            CreateUserId();
         }
     }
 
@@ -53,5 +57,12 @@ public class UserDataManager : Singleton<UserDataManager>
     private string GetUserKey()
     {
         return $"UserData_{userID}";
+    }
+    public void ResetUserDataToDefault()
+    {
+        CreateUserId();
+        LoadUserID();
+        LoadUserData();
+        SaveUserData();
     }
 }

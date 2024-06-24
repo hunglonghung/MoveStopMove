@@ -94,7 +94,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -14.64
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
       propertyPath: m_LocalPosition.y
@@ -407,7 +407,7 @@ MonoBehaviour:
   WeaponType: 0
   CharacterSkin: {fileID: 1218535299219558830}
   Hand: {fileID: 7769985909291098951}
-  Gun: {fileID: 0}
+  Gun: {fileID: 4311063824449088501, guid: 286268e4d92be4533ba72a4e3bc82ec3, type: 3}
   Pants: {fileID: 4139432481854501765}
   PantsMaterial: {fileID: 0}
   Head: {fileID: 6860148165179775126}
@@ -418,7 +418,7 @@ MonoBehaviour:
   BotSpawner: {fileID: 0}
   FloatingJoystick: {fileID: 0}
   PlayerCamera: {fileID: 0}
-  TargetPrefab: {fileID: 0}
+  TargetPrefab: {fileID: 7958489573432114995, guid: d4c3a87d9573d4aad97b94b221f96ab6, type: 3}
 --- !u!54 &6226457752813617309
 Rigidbody:
   m_ObjectHideFlags: 0

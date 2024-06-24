@@ -24,9 +24,7 @@ public class WeaponManager : MonoBehaviour
     [SerializeField] private GameObject coinPurchaseButton;
     [SerializeField] private TextMeshProUGUI coinPurchaseButtonText;
     [SerializeField] private GameObject videoButton;
-    [Header("User Data")]
-    [SerializeField] private UserDataManager userDataManager;
-    [SerializeField] private UserData user;
+    [SerializeField] public UserData user;
     void Awake()
     {
         Debug.Log("this is weapon");
@@ -52,8 +50,7 @@ public class WeaponManager : MonoBehaviour
     }
     public void SetCoin()
     {
-        user = userDataManager.userData;
-        Debug.Log(user.coin.ToString());
+        user = GameManager.Instance.userDataManager.userData;
         coinText.text = user.coin.ToString();
     }
     public void LoadWeapon()
@@ -117,18 +114,14 @@ public class WeaponManager : MonoBehaviour
             user.coin -= weaponPrice;
             user.weaponState[CurrentWeaponIndex] = 1;
         }
-<<<<<<< HEAD
         GameManager.Instance.userDataManager.SaveUserData();
         SetCoin();
         LoadWeapon();
-=======
-        userDataManager.SaveUserData();
->>>>>>> parent of 9a266e1 (Adding skin shop)
     }
     public void EquipWeapon()
     {
         user.currentWeaponIndex = CurrentWeaponIndex;
-        userDataManager.SaveUserData();
+        GameManager.Instance.userDataManager.SaveUserData();
         LoadWeapon();
 
     }

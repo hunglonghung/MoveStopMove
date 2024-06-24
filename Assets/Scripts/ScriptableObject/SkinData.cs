@@ -1,68 +1,67 @@
 using UnityEngine;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 
 [CreateAssetMenu(fileName = "SkinData", menuName = "ScriptableObject/SkinData", order = 1)]
 public class SkinData : ScriptableObject
 {
-    [SerializeField] public List<SkinItem> skinList;
+    [SerializeField] public List<Skin> SkinList;
+    [SerializeField] public List<Hat> HatList;
+    [SerializeField] public List<Shield> ShieldList;
+    [SerializeField] public List<Pants> PantsList;
+    [SerializeField] public List<Color> ColorList;
 
     public Skin GetSkin(int index)
     {
-        if(index >= 0 && index < skinList.Count)
+        if(index >= 0 && index < SkinList.Count)
         {
-            return skinList[index].skin;
+            return SkinList[index];
         }
         return null;
     }
     
-    public int GetPrice(int index)
-    {
-        if(index >= 0 && index < skinList.Count)
-        {
-            return skinList[index].price;
-        }
-        return 0;
-    }
     
-    public GameObject GetHat(int index)
+    public Hat GetHat(int index)
     {
-        if(index >= 0 && index < skinList.Count)
+        if(index >= 0 && index < HatList.Count)
         {
-            return skinList[index].hat;
+            return HatList[index];
         }
         return null;
     }
     
     public Color GetColor(int index)
     {
-        if(index >= 0 && index < skinList.Count)
+        if(index >= 0 && index < ColorList.Count)
         {
-            return skinList[index].color;
+            return ColorList[index];
         }
-        return Color.black;
+        return Color.white;
     }
     
-    public Material GetPantsMaterial(int index)
+    public Pants GetPants(int index)
     {
-        if(index >= 0 && index < skinList.Count)
+        if(index >= 0 && index < PantsList.Count)
         {
-            return skinList[index].pants;
+            return PantsList[index];
+        }
+        return null;
+    }
+    public Shield GetShield(int index)
+    {
+        if(index >= 0 && index < ShieldList.Count)
+        {
+            return ShieldList[index];
         }
         return null;
     }
 }
-
 [System.Serializable]
-public class SkinItem
+public class Colors
 {
-    public Skin skin;
-    public int price;
-    public GameObject hat;
     public Color color;
-    public Material pants;
 }
 
-<<<<<<< HEAD
 [System.Serializable]
 public class Hat
 {
@@ -173,10 +172,4 @@ public class Shield
     {
         return status;
     }
-=======
-public class Skin
-{
-    public string skinName;
-    public bool isUnlocked;
->>>>>>> parent of 9a266e1 (Adding skin shop)
 }

@@ -17,6 +17,8 @@ public class Player : Character
     public override void Start()
     {
         base.Start();
+        SetSkin(Skin);
+        SetWeapon(Weapon);
         SetTarget();
         CameraDistanceInit(25f);
     }
@@ -33,15 +35,24 @@ public class Player : Character
     {
         UserData user = GameManager.Instance.userDataManager.userData;
         Hat = skinData.GetHat(user.currentHatIndex).GetHatGameObject();
+        if (Hat != null)
+        {
+            GameObject botHat = Instantiate(Hat, Head.transform.position, Quaternion.identity, Head.transform);
+            botHat.transform.position += Vector3.up * 0.4f;
+        }
         PantsMaterial = skinData.GetPants(user.currentPantIndex).GetPantsMaterial();
+        Pants.GetComponent<Renderer>().material = PantsMaterial;
     }
     public override void SetWeapon(WeaponData weaponData)
     {
         UserData user = GameManager.Instance.userDataManager.userData;
+        Debug.Log("Current wp index:" + user.currentWeaponIndex + weaponData.GetWeaponType(user.currentWeaponIndex));
         WeaponType = weaponData.GetWeaponType(user.currentWeaponIndex);
+        Gun = weaponData.GetGun(user.currentWeaponIndex);   
         if(Gun != null)
         {   
             GameObject characterWeapon = Instantiate(Gun, Hand.transform.position, Quaternion.identity, Hand.transform);
+            characterWeapon.SetActive(true);
             characterWeapon.transform.rotation = Quaternion.Euler(180, 90, 0);
         }
         // Debug.Log(WeaponType + "and" + Weapon.GetBulletByWeaponType(WeaponType));

@@ -910,7 +910,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &119528658
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2545,7 +2545,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &258861224
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3257,11 +3257,7 @@ Transform:
   m_GameObject: {fileID: 345257364}
   serializedVersion: 2
   m_LocalRotation: {x: 0.25949654, y: -0.001536433, z: 0.00041296086, w: 0.96574277}
-<<<<<<< HEAD
-  m_LocalPosition: {x: 1.8688318, y: 12.530376, z: -29.83296}
-=======
-  m_LocalPosition: {x: 18.37709, y: 14.034022, z: -32.428913}
->>>>>>> parent of 9a266e1 (Adding skin shop)
+  m_LocalPosition: {x: 1.8853514, y: 15.537667, z: -35.024868}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3793,9 +3789,9 @@ RectTransform:
   - {fileID: 1280390815}
   m_Father: {fileID: 1331677041}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 758.7928, y: -15}
   m_SizeDelta: {x: 144.7, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &456440193
@@ -8143,9 +8139,9 @@ RectTransform:
   - {fileID: 166283036}
   m_Father: {fileID: 1331677041}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 305.1969, y: -15}
   m_SizeDelta: {x: 144.7, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &933820442
@@ -8451,11 +8447,7 @@ Transform:
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
   m_LocalRotation: {x: 0.25949654, y: -0.001536433, z: 0.00041296086, w: 0.96574277}
-<<<<<<< HEAD
-  m_LocalPosition: {x: 1.8688318, y: 12.530376, z: -29.83296}
-=======
-  m_LocalPosition: {x: 18.37709, y: 14.034022, z: -32.428913}
->>>>>>> parent of 9a266e1 (Adding skin shop)
+  m_LocalPosition: {x: 1.8853514, y: 15.537667, z: -35.024868}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9071,7 +9063,6 @@ MonoBehaviour:
   coinPurchaseButton: {fileID: 1530238341}
   coinPurchaseButtonText: {fileID: 1975726150}
   videoButton: {fileID: 1478096875}
-  userDataManager: {fileID: 300569361}
   user:
     coin: 5000
     levelNumber: 1
@@ -10313,9 +10304,9 @@ RectTransform:
   - {fileID: 41925352}
   m_Father: {fileID: 1331677041}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 531.9949, y: -15}
   m_SizeDelta: {x: 144.7, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1279880652
@@ -10937,11 +10928,7 @@ MonoBehaviour:
   m_TargetMovementOnly: 1
   m_ScreenX: 0.5
   m_ScreenY: 0.5
-<<<<<<< HEAD
-  m_CameraDistance: 25
-=======
-  m_CameraDistance: 28
->>>>>>> parent of 9a266e1 (Adding skin shop)
+  m_CameraDistance: 31
   m_DeadZoneWidth: 0
   m_DeadZoneHeight: 0
   m_DeadZoneDepth: 0
@@ -12410,7 +12397,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1401805424}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1685786309}
+        m_TargetAssemblyTypeName: LoseUIManager, Assembly-CSharp
+        m_MethodName: PlayAgain
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &1401805426
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12980,9 +12979,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1057116936}
-        m_TargetAssemblyTypeName: WeaponManager, Assembly-CSharp
-        m_MethodName: BackToHome
+      - m_Target: {fileID: 1685786309}
+        m_TargetAssemblyTypeName: LoseUIManager, Assembly-CSharp
+        m_MethodName: MoveToMainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13336,9 +13335,9 @@ RectTransform:
   - {fileID: 1216332937}
   m_Father: {fileID: 1331677041}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 78.39897, y: -15}
   m_SizeDelta: {x: 144.7, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1499039832
@@ -15314,6 +15313,7 @@ MonoBehaviour:
   time: 5
   timeText: {fileID: 1681899702}
   image: {fileID: 915839746}
+  player: {fileID: 1771102883}
 --- !u!1 &1702879372
 GameObject:
   m_ObjectHideFlags: 0
@@ -17106,6 +17106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   State: 0
+  userDataManager: {fileID: 300569361}
 --- !u!4 &1937975379
 Transform:
   m_ObjectHideFlags: 0
@@ -17878,15 +17879,9 @@ MonoBehaviour:
   soundButton:
   - {fileID: 1637549333}
   - {fileID: 1877218432}
-<<<<<<< HEAD
   coinText: {fileID: 1272204830}
   user:
     coin: 5000
-=======
-  coinText: {fileID: 1738803516}
-  userData:
-    coin: 10000
->>>>>>> parent of 9a266e1 (Adding skin shop)
     levelNumber: 1
     name: YOU
     currentWeaponIndex: 0
@@ -17894,11 +17889,12 @@ MonoBehaviour:
     currentPantIndex: 0
     currentShieldIndex: 0
     currentComboSkinIndex: 0
-    weaponState: 0100000000000000000000000000000000000000000000000000000000000000
+    weaponState: 0100000000000000000000000000000000000000000000000000000000000000000000000000000001000000
     hatState: 0000000000000000000000000000000000000000000000000000000000000000
     pantState: 0000000000000000000000000000000000000000000000000000000000000000
     shieldState: 000000000000000000000000
     comboSkinState: 000000000000000000000000
+  player: {fileID: 1771102883}
 --- !u!114 &2014396974 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1764969758147117621, guid: 06f8554d1a2cd45aeb51860b525fec00, type: 3}
@@ -21303,6 +21299,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1937975379}
     m_Modifications:
     - target: {fileID: 272877257009769919, guid: 0c12a4d81ae744a5197d5e89c254a0dd, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1771102883}
+    - target: {fileID: 272877257009769919, guid: 0c12a4d81ae744a5197d5e89c254a0dd, type: 3}
       propertyPath: aliveText
       value: 
       objectReference: {fileID: 2014396974}
@@ -22594,14 +22594,6 @@ PrefabInstance:
       propertyPath: PlayerCamera
       value: 
       objectReference: {fileID: 345257365}
-    - target: {fileID: 8698885121846048852, guid: 8290b8fa9f06b401cb37380dc906a938, type: 3}
-      propertyPath: TargetPrefab
-      value: 
-      objectReference: {fileID: 7958489573432114995, guid: d4c3a87d9573d4aad97b94b221f96ab6, type: 3}
-    - target: {fileID: 8698885121846048852, guid: 8290b8fa9f06b401cb37380dc906a938, type: 3}
-      propertyPath: gameplayManager
-      value: 
-      objectReference: {fileID: 26943445}
     - target: {fileID: 8698885121846048852, guid: 8290b8fa9f06b401cb37380dc906a938, type: 3}
       propertyPath: FloatingJoystick
       value: 

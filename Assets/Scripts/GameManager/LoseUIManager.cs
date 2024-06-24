@@ -12,6 +12,7 @@ public class LoseUIManager : MonoBehaviour
     [SerializeField] float time = 6f;
     [SerializeField] TextMeshProUGUI timeText;
     [SerializeField] GameObject image;
+    [SerializeField] Player player;
     void Awake()
     {
         GameManager.OnGameStateChanged += GameManagerOnOnGameStateChanged;
@@ -31,8 +32,11 @@ public class LoseUIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        time -= Time.deltaTime;
-        DisplayLoseImage();
+        if (player.isDead)
+        {
+            time -= Time.deltaTime;
+            DisplayLoseImage();
+        }
         if(time <= 0) MoveToMainMenu();
     }
 
@@ -44,16 +48,29 @@ public class LoseUIManager : MonoBehaviour
 
     public void PlayAgain()
     {
+        ResetPlayer();
         GameManager.Instance.UpdateGameState(GameState.GamePlay);
         AudioManager.instance.PlayButtonSoundClip();
     }
     public void MoveToMainMenu()
     {
-        if(GameManager.Instance.State == GameState.Lose)
+        if(time > -1f)
         {
-            GameManager.Instance.UpdateGameState(GameState.Home);
-            AudioManager.instance.PlayButtonSoundClip();
+            ResetPlayer();
+            if(GameManager.Instance.State == GameState.Lose)
+            {
+                GameManager.Instance.UpdateGameState(GameState.Home);
+                AudioManager.instance.PlayButtonSoundClip();
+            }
+            time = 6f;
         }
+
     }
 
+    private void ResetPlayer()
+    {
+        player.isDead = false;
+        player.ChangeState(new PlayerIdleState());
+        player.FloatingJoystick.enabled = true;
+    }
 }

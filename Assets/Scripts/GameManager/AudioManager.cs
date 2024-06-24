@@ -85,16 +85,12 @@ public class AudioManager : MonoBehaviour
         if (!musicSource.isPlaying)
             musicSource.Play();
     }
-
     void PlayClip(AudioClip clip, float volume)
     {
-        //needs correction in the future
         if(clip != null)
         {
             Vector3 cameraPos = Camera.main.transform.position;
-            float distance = Vector3.Distance(player.transform.position, cameraPos);
-            float adjustedVolume = volume * (1 / (1 + distance)); 
-            AudioSource.PlayClipAtPoint(clip, cameraPos, adjustedVolume);
+            AudioSource.PlayClipAtPoint(clip, cameraPos, volume);
         }
     }
     public void MuteMusic()

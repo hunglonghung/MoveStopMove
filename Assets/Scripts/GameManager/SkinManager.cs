@@ -8,16 +8,16 @@ using static GameManager;
 
 public class SkinManager : MonoBehaviour
 {
-    [Header("Weapon Shop")]
+    [Header("Skin Shop")]
     [SerializeField] public GameObject SkinShopPanel;
-    [SerializeField] public WeaponData WeaponData;
-    [SerializeField] public Image WeaponImage;
-    [SerializeField] public TextMeshProUGUI WeaponText;
+    [SerializeField] public SkinData SkinData;
     [SerializeField] private TextMeshProUGUI coinText;
-    [SerializeField] public int CurrentWeaponIndex = 0;
-    [SerializeField] private TextMeshProUGUI statusText ;
-    [SerializeField] private GameObject lockedText;
-    [SerializeField] private GameObject buttonGroup;
+    [SerializeField] private TextMeshProUGUI statusText;
+    [SerializeField] private int CurrentItemTypeIndex;
+    [SerializeField] private int CurrentItemIndex;
+    [Header("Buttons")]
+    [SerializeField] public List<Item> ItemButton;
+    [SerializeField] public List<ItemType> ItemTypeButton;
     [SerializeField] private GameObject equipButton;
     [SerializeField] private GameObject equipped;
     [SerializeField] private GameObject select;
@@ -25,7 +25,6 @@ public class SkinManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI coinPurchaseButtonText;
     [SerializeField] private GameObject videoButton;
     [Header("User Data")]
-    [SerializeField] private UserDataManager userDataManager;
     [SerializeField] private UserData user;
     void Awake()
     {
@@ -43,6 +42,8 @@ public class SkinManager : MonoBehaviour
     {
         SetCoin();
         LoadSkin();
+        CurrentItemTypeIndex = 0;
+        CurrentItemIndex = 0;
     }
 
     // Update is called once per frame
@@ -52,24 +53,16 @@ public class SkinManager : MonoBehaviour
     }
     public void SetCoin()
     {
-        user = userDataManager.userData;
+        user = Instance.userDataManager.userData;
         Debug.Log(user.coin.ToString());
         coinText.text = user.coin.ToString();
     }
     public void LoadSkin()
     {
-        WeaponImage.sprite = WeaponData.GetSprite(CurrentWeaponIndex);
-        WeaponText.text = WeaponData.GetWeaponName(CurrentWeaponIndex);
-        statusText.text = WeaponData.GetStatusText(CurrentWeaponIndex);
-        coinPurchaseButtonText.text = WeaponData.GetPrice(CurrentWeaponIndex);
-        if(user.weaponState[CurrentWeaponIndex] == 1)
+        switch (CurrentItemTypeIndex)
         {
-            equipButton.SetActive(true);
-            lockedText.SetActive(false);
-            buttonGroup.SetActive(true);
-            if(user.currentWeaponIndex == CurrentWeaponIndex)
+            case 0:
             {
-<<<<<<< HEAD
                 DisplayHat();
                 break;
             }
@@ -121,37 +114,37 @@ public class SkinManager : MonoBehaviour
                         DisplaySelect();
                     }
                 }
-=======
-                equipped.SetActive(true);
-                select.SetActive(false);
-                equipButton.GetComponent<Image>().color = new Color(0, 0, 0, 0); 
->>>>>>> parent of 9a266e1 (Adding skin shop)
             }
             else
             {
-                equipped.SetActive(false);
-                select.SetActive(true);
-                equipButton.GetComponent<Image>().color = new Color(255, 255, 255, 255); 
+                ItemButton[i].Image.enabled = false;
+                ItemButton[i].LockIcon.SetActive(false);
             }
-            coinPurchaseButton.SetActive(false);
-            videoButton.SetActive(false);
         }
-        else
+        ItemButton[CurrentItemIndex].Button.GetComponent<Image>().color =  new Color32(0, 255, 1, 255);
+        if(user.comboSkinState[CurrentItemIndex] == 0)
         {
+            Debug.Log("here");
             coinPurchaseButton.SetActive(true);
             videoButton.SetActive(true);
             equipButton.SetActive(false);
-            lockedText.SetActive(true);
-            buttonGroup.SetActive(false);
+            coinPurchaseButtonText.text = SkinData.SkinList[CurrentItemIndex].GetSkinPrice().ToString();
+        }
+        else
+        {
+            coinPurchaseButton.SetActive(false);
+            videoButton.SetActive(false);
+            equipButton.SetActive(true);
+            ItemButton[CurrentItemIndex].LockIcon.SetActive(false);
         }
         
+    }
 
-    }   
-    public void MoveToNextWeapon()
+
+    private void DisplayShield()
     {
-        if (CurrentWeaponIndex < WeaponData.weaponList.Count - 1)
+        for(int i = 0; i < 6; i++)
         {
-<<<<<<< HEAD
             ItemButton[i].Button.GetComponent<Image>().color =  new Color32(255,255,255,255);
             if(i < SkinData.ShieldList.Count)
             {
@@ -310,28 +303,24 @@ public class SkinManager : MonoBehaviour
                 CurrentItemTypeIndex = i;
                 break;
             }
-=======
-            CurrentWeaponIndex ++;
->>>>>>> parent of 9a266e1 (Adding skin shop)
         }
         LoadSkin();
     }
-    public void MoveToPreviousWeapon()
+    public void ItemChange(GameObject clickedButton)
     {
-<<<<<<< HEAD
         AudioManager.instance.PlayButtonSoundClip();
         for (int i = 0; i < ItemButton.Count; i++)
-=======
-        if (CurrentWeaponIndex > 0)
->>>>>>> parent of 9a266e1 (Adding skin shop)
         {
-            CurrentWeaponIndex --;
+            if (ItemButton[i].Button == clickedButton)
+            {
+                CurrentItemIndex = i;
+                break;
+            }
         }
         LoadSkin();
     }
-    public void PurchaseItem()
+    public void BackToHome()
     {
-<<<<<<< HEAD
         AudioManager.instance.PlayButtonSoundClip();
         GameManager.Instance.UpdateGameState(GameState.Home);
     }
@@ -372,24 +361,33 @@ public class SkinManager : MonoBehaviour
         LoadSkin();
         SetCoin();
         
-=======
-        int weaponPrice = int.Parse(WeaponData.GetPrice(CurrentWeaponIndex));
-        if(user.coin >= weaponPrice)
-        {
-            user.coin -= weaponPrice;
-            user.weaponState[CurrentWeaponIndex] = 1;
-            SetCoin();
-            LoadSkin();
-        }
-        userDataManager.SaveUserData();
->>>>>>> parent of 9a266e1 (Adding skin shop)
     }
-    public void EquipWeapon()
+    public void EquipItem()
     {
-        user.currentWeaponIndex = CurrentWeaponIndex;
-        userDataManager.SaveUserData();
+        switch (CurrentItemTypeIndex)
+        {
+            case 0:
+            {
+                user.currentHatIndex = CurrentItemIndex;
+                break;
+            }
+            case 1:
+            {   
+                user.currentPantIndex = CurrentItemIndex;
+                break;
+            }
+            case 2:
+            {   
+                user.currentShieldIndex = CurrentItemIndex;
+                break;
+            }
+            case 3:
+            {   
+                user.currentComboSkinIndex = CurrentItemIndex;
+                break;
+            }
+        }
         LoadSkin();
-
     }
     public void DisplayEquipped()
     {
@@ -407,4 +405,16 @@ public class SkinManager : MonoBehaviour
     }
 
 
+}
+[System.Serializable]
+public class Item
+{
+    public Image Image;
+    public GameObject Button;
+    public GameObject LockIcon;
+}
+[System.Serializable]
+public class ItemType
+{
+    public GameObject Button;
 }

@@ -10,8 +10,10 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public GameState State;
-    public static int Coins = 500;
     public static event Action<GameState> OnGameStateChanged;
+    [Header("User Data")]
+    [SerializeField] public UserDataManager userDataManager;
+
     void Awake()
 {
     if (Instance == null)
@@ -38,27 +40,32 @@ public class GameManager : MonoBehaviour
     }
     public void UpdateGameState(GameState newState)
     {
-        Debug.Log("old State:" + State);
         State = newState;
-        Debug.Log("new State:" + State);
         switch (newState)
         {
             case GameState.Loading:
+                Time.timeScale = 1f;
                 break;
             case GameState.Home:
+                Time.timeScale = 0f;
                 break;
             case GameState.WeaponShop:
+                Time.timeScale = 0f;
                 break;
             case GameState.SkinShop:
+                Time.timeScale = 0f;
                 break;
             case GameState.GamePlay:
-                Time.timeScale = 0;
+                Time.timeScale = 1f;
                 break;
             case GameState.Settings:
+                Time.timeScale = 0f;
                 break;
             case GameState.Win:
+                Time.timeScale = 1f;
                 break;
             case GameState.Lose:
+                Time.timeScale = 1f;
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(newState),newState,null);

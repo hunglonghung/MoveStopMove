@@ -1,0 +1,44 @@
+public static class Cache
+{
+
+  private static Dictionary<Collider, Character> characters = new Dictionary<Collider, Character>();
+
+    public static Character GetCharacter(Collider collider)
+    {
+        if (!characters.ContainsKey(collider))
+        {
+            characters.Add(collider, collider.GetComponent<Character>());
+        }
+
+        return characters[collider];
+    }
+}
+ 
+Cahe 1 loại object mà ở đây Character
+Vd add character khác vào list khi trong range attack:
+  
+public class CharacterSight : MonoBehaviour
+{
+    [SerializeField] Character character;
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag(Constant.TAG_CHARACTER))
+        {
+            Character target = Cache.GetCharacter(other);
+            if (!target.IsDead)
+            {
+                character.AddTarget(target);
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag(Constant.TAG_CHARACTER))
+        {
+            Character target = Cache.GetCharacter(other);
+            character.RemoveTarget(target);
+        }
+    }
+}

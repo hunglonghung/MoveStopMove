@@ -17,7 +17,7 @@ public class BotAttackState : IState<Character>
         if(t.isDead) t.ChangeState(new BotLoseState());
         else
         {
-            t.objectScan();
+            t.ObjectScan();
             ((Bot)t).StopMoving();
             AnimatorStateInfo stateInfo = t.anim.GetCurrentAnimatorStateInfo(0);
             if(t.CheckTarget(t.hitColliders) == 0 || BulletPool.Instance.IsBulletActive(t.WeaponType,t))

@@ -69,6 +69,7 @@ public class Hat
     public Sprite HatSprite;
     public int HatPrice;
     public string status;
+    public GameObject HatObject;
 
     public GameObject GetHatGameObject()
     {
@@ -96,6 +97,7 @@ public class Skin
     public Sprite SkinSprite;
     public int SkinPrice;
     public string status;
+    public GameObject SkinObject;
 
     public Sprite GetSprite()
     {
@@ -120,6 +122,7 @@ public class Pants
     public Sprite pantsSprite;
     public int pantsPrice;
     public string status;
+    public GameObject PantsObject;
 
     public Material GetPantsMaterial()
     {
@@ -148,6 +151,7 @@ public class Shield
     public Sprite ShieldSprite;
     public int ShieldPrice;
     public string status;
+    public GameObject ShieldObject;
 
     public GameObject GetShieldGameObject()
     {

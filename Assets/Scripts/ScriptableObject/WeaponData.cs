@@ -53,6 +53,7 @@
         public int price;
         public Sprite sprite;
         public string statusText;
+        public GameObject WeaponObject;
     }
 
     public enum ProjectileType

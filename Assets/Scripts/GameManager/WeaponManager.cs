@@ -113,10 +113,10 @@ public class WeaponManager : MonoBehaviour
         {
             user.coin -= weaponPrice;
             user.weaponState[CurrentWeaponIndex] = 1;
-            SetCoin();
-            LoadWeapon();
         }
         GameManager.Instance.userDataManager.SaveUserData();
+        SetCoin();
+        LoadWeapon();
     }
     public void EquipWeapon()
     {

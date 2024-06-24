@@ -108,6 +108,7 @@ public class Character : MonoBehaviour
         CurrentBullet = BulletPool.Instance.GetBullet(WeaponType);
         if (CurrentBullet != null)
         {
+            AudioManager.instance.PlayWeaponSoundClip();
             CurrentBullet.transform.position = gameObject.transform.position;
             Vector3 originalScale = BulletPool.Instance.GetOriginalScale(WeaponType);
             CurrentBullet.transform.localScale = originalScale * SizeMultiplier;
@@ -118,7 +119,7 @@ public class Character : MonoBehaviour
     }
 
     //Set Weapon
-    public void SetWeapon(WeaponData weaponData)
+    public virtual void SetWeapon(WeaponData weaponData)
     {
         int randomIndex = Random.Range(0, weaponData.weaponList.Count);
         Gun = weaponData.GetGun(randomIndex);
@@ -133,7 +134,7 @@ public class Character : MonoBehaviour
     }
 
     //Set Skin
-    public void SetSkin(SkinData skinData)
+    public virtual void SetSkin(SkinData skinData)
     {
         int randomSkinIndex = Random.Range(0, skinData.SkinList.Count);
         int randomHatIndex = Random.Range(0, skinData.HatList.Count);
@@ -161,7 +162,7 @@ public class Character : MonoBehaviour
     }
 
     //Target 
-    public void objectScan()
+    public void ObjectScan()
     {
         hitColliders = Physics.OverlapSphere(transform.position, Range, layer);
         hitColliders = FilterSelf(hitColliders);

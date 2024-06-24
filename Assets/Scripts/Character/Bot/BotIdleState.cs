@@ -21,7 +21,7 @@ public class BotIdleState : IState<Character>
         {
             time += Time.deltaTime;
             ((Bot)t).StopMoving();
-            t.objectScan();
+            t.ObjectScan();
             if(((Bot)t).CheckPathPending() && time > randomTime)
             {
                 t.ChangeState(new BotRunState());

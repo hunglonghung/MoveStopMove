@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: 47c5647b1ac791e4f94e83afb9095d5b, type: 3}
       propertyPath: m_Name
-      value: candy_1
+      value: Candycane
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 47c5647b1ac791e4f94e83afb9095d5b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -111,3 +111,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attacker: {fileID: 0}
   victim: {fileID: 0}
+  weaponType: 0
+  GameplayManager: {fileID: 272877257009769919, guid: 0c12a4d81ae744a5197d5e89c254a0dd, type: 3}
+  rotationValue: 10

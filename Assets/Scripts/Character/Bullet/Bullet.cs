@@ -14,6 +14,7 @@ public class Bullet : MonoBehaviour
     public Character attacker;
     public Character victim; 
     public WeaponType weaponType;
+    [SerializeField] public GameplayManager GameplayManager;
     [SerializeField] private float rotationValue = 10f;
 
     public void OnInit(Vector3 bulletDirection, float bulletSpeed, Character character, float scanRadius, WeaponType weapon)
@@ -49,6 +50,8 @@ public class Bullet : MonoBehaviour
             if(!CheckSameCharacter())
             {
                 victim.isDead = true;
+                AudioManager.instance.PlayWeaponCollisionSoundClip();
+                AudioManager.instance.PlayDeathSoundClip();
                 OnKill(attacker);
             }
         }
@@ -65,6 +68,13 @@ public class Bullet : MonoBehaviour
         if (attacker is Player player)
         {
             player.IncreaseVirtualCameraRange(3f);
+        }
+        Debug.Log(GameplayManager.AlivePlayers);
+        GameplayManager.AlivePlayers --;
+        GameplayManager.SetAliveText();
+        if(victim is Player)
+        {
+            GameplayManager.MoveToLoseUI();
         }
     }
 

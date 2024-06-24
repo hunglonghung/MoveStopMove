@@ -105,6 +105,14 @@ public class SkinManager : MonoBehaviour
                 else
                 {
                     ItemButton[i].LockIcon.SetActive(false);
+                    if (i == user.currentComboSkinIndex && CurrentItemTypeIndex == 3)
+                    {
+                        DisplayEquipped();
+                    }
+                    else
+                    {
+                        DisplaySelect();
+                    }
                 }
             }
             else
@@ -149,6 +157,14 @@ public class SkinManager : MonoBehaviour
                 else
                 {
                     ItemButton[i].LockIcon.SetActive(false);
+                    if (i == user.currentShieldIndex && CurrentItemTypeIndex == 2)
+                    {
+                        DisplayEquipped();
+                    }
+                    else
+                    {
+                        DisplaySelect();
+                    }
                 }
             }
             else
@@ -186,13 +202,21 @@ public class SkinManager : MonoBehaviour
             {
                 ItemButton[i].Image.enabled = true;
                 ItemButton[i].Image.sprite = SkinData.PantsList[i].GetPantsSprite();
-                if(user.pantState[i] == 0)
+                if(user.pantState[i] == 0 && CurrentItemTypeIndex == 1)
                 {
                     ItemButton[i].LockIcon.SetActive(true);
                 }
                 else
                 {
                     ItemButton[i].LockIcon.SetActive(false);
+                    if (i == user.currentPantIndex)
+                    {
+                        DisplayEquipped();
+                    }
+                    else
+                    {
+                        DisplaySelect();
+                    }
                 }
             }
             else
@@ -234,6 +258,14 @@ public class SkinManager : MonoBehaviour
                 else
                 {
                     ItemButton[i].LockIcon.SetActive(false);
+                    if (i == user.currentHatIndex && CurrentItemTypeIndex == 0)
+                    {
+                        DisplayEquipped();
+                    }
+                    else
+                    {
+                        DisplaySelect();
+                    }
                 }
             }
             else
@@ -261,6 +293,7 @@ public class SkinManager : MonoBehaviour
 
     public void ItemTypeChange(GameObject clickedButton)
     {
+        AudioManager.instance.PlayButtonSoundClip();
         ItemTypeButton[CurrentItemTypeIndex].Button.GetComponent<Image>().color = new Color32(0, 0, 0, 73);
         clickedButton.GetComponent<Image>().color = new Color32(0, 0, 0, 0);
         for (int i = 0; i < ItemTypeButton.Count; i++)
@@ -275,6 +308,7 @@ public class SkinManager : MonoBehaviour
     }
     public void ItemChange(GameObject clickedButton)
     {
+        AudioManager.instance.PlayButtonSoundClip();
         for (int i = 0; i < ItemButton.Count; i++)
         {
             if (ItemButton[i].Button == clickedButton)
@@ -287,6 +321,7 @@ public class SkinManager : MonoBehaviour
     }
     public void BackToHome()
     {
+        AudioManager.instance.PlayButtonSoundClip();
         GameManager.Instance.UpdateGameState(GameState.Home);
     }
     public void ItemPurchase()
@@ -294,6 +329,7 @@ public class SkinManager : MonoBehaviour
         int itemPrice = int.Parse(coinPurchaseButtonText.text);
         if(user.coin >= itemPrice)
         {
+            AudioManager.instance.PlayButtonSoundClip();
             user.coin -= itemPrice;
             switch (CurrentItemTypeIndex)
             {
@@ -318,11 +354,13 @@ public class SkinManager : MonoBehaviour
                     break;
                 }
             }
-            SetCoin();
-            LoadSkin();
 
         }
+        else AudioManager.instance.PlayButtonRejectSoundClip();
         GameManager.Instance.userDataManager.SaveUserData();
+        LoadSkin();
+        SetCoin();
+        
     }
     public void EquipItem()
     {
@@ -350,6 +388,20 @@ public class SkinManager : MonoBehaviour
             }
         }
         LoadSkin();
+    }
+    public void DisplayEquipped()
+    {
+        AudioManager.instance.PlayButtonSoundClip();
+        equipped.SetActive(true);
+        select.SetActive(false);
+        equipButton.GetComponent<Button>().image.color = new Color32(255,255,255,0);
+    }
+    public void DisplaySelect()
+    {
+        AudioManager.instance.PlayButtonSoundClip();
+        equipped.SetActive(false);
+        select.SetActive(true);
+        equipButton.GetComponent<Button>().image.color = new Color32(255,255,255,255);
     }
 
 

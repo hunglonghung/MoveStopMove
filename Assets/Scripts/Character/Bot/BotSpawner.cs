@@ -6,10 +6,11 @@ using UnityEngine.AI;
 public class BotSpawner : MonoBehaviour
 {
     public static BotSpawner Instance;
-    [SerializeField] private int poolSize = 20;
+    [SerializeField] private int poolSize = 10;
     private int spawnedBotNumber = 0;
     [SerializeField] private int targetNumber = 50;
     private List<GameObject> botPools;
+    [SerializeField] public GameplayManager GameplayManager;
     public GameObject botPrefab; 
     public float spawnRadius = 50f;
     public float minDistance = 10f; // prevent dead when spawning
@@ -29,6 +30,7 @@ public class BotSpawner : MonoBehaviour
         if(spawnedBotNumber == targetNumber && CheckBotRemaining() == 0)
         {
             player.isWin = true;
+            GameplayManager.MoveToWinUI();
         }
     }
     public void CreateBotPool()

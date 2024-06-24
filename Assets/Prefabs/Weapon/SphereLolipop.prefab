@@ -128,4 +128,5 @@ MonoBehaviour:
   attacker: {fileID: 0}
   victim: {fileID: 0}
   weaponType: 0
+  GameplayManager: {fileID: 272877257009769919, guid: 0c12a4d81ae744a5197d5e89c254a0dd, type: 3}
   rotationValue: 10

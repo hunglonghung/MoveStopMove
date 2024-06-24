@@ -23,10 +23,29 @@ public class Player : Character
     public override void Update()
     {
         base.Update();
-        objectScan();
+        ObjectScan();
         SetTarget();
         UpdateTargetPosition();
         if(isDead) ChangeState(new PlayerLoseState());
+    }
+    //Skin + Wp Override
+    public override void SetSkin(SkinData skinData)
+    {
+        UserData user = GameManager.Instance.userDataManager.userData;
+        Hat = skinData.GetHat(user.currentHatIndex).GetHatGameObject();
+        PantsMaterial = skinData.GetPants(user.currentPantIndex).GetPantsMaterial();
+    }
+    public override void SetWeapon(WeaponData weaponData)
+    {
+        UserData user = GameManager.Instance.userDataManager.userData;
+        WeaponType = weaponData.GetWeaponType(user.currentWeaponIndex);
+        if(Gun != null)
+        {   
+            GameObject characterWeapon = Instantiate(Gun, Hand.transform.position, Quaternion.identity, Hand.transform);
+            characterWeapon.transform.rotation = Quaternion.Euler(180, 90, 0);
+        }
+        // Debug.Log(WeaponType + "and" + Weapon.GetBulletByWeaponType(WeaponType));
+        BulletPool.Instance.CreateBulletPool(WeaponType, Weapon.GetBulletByWeaponType(WeaponType));
     }
     //Move Direction
     public void GetMoveDirection()

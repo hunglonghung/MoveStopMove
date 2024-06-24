@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        UpdateGameState(GameState.Loading);
+        UpdateGameState(GameState.Home);
     }
 
     // Update is called once per frame
@@ -54,7 +54,6 @@ public class GameManager : MonoBehaviour
             case GameState.GamePlay:
                 break;
             case GameState.Settings:
-                Time.timeScale = 0;
                 break;
             case GameState.Win:
                 break;

@@ -54,7 +54,7 @@ public class SkinManager : MonoBehaviour
     public void SetCoin()
     {
         user = Instance.userDataManager.userData;
-        Debug.Log(user.coin.ToString());
+        //Debug.Log(user.coin.ToString());
         coinText.text = user.coin.ToString();
     }
     public void LoadSkin()
@@ -105,14 +105,6 @@ public class SkinManager : MonoBehaviour
                 else
                 {
                     ItemButton[i].LockIcon.SetActive(false);
-                    if (i == user.currentComboSkinIndex && CurrentItemTypeIndex == 3)
-                    {
-                        DisplayEquipped();
-                    }
-                    else
-                    {
-                        DisplaySelect();
-                    }
                 }
             }
             else
@@ -124,7 +116,7 @@ public class SkinManager : MonoBehaviour
         ItemButton[CurrentItemIndex].Button.GetComponent<Image>().color =  new Color32(0, 255, 1, 255);
         if(user.comboSkinState[CurrentItemIndex] == 0)
         {
-            Debug.Log("here");
+            // Debug.Log("here");
             coinPurchaseButton.SetActive(true);
             videoButton.SetActive(true);
             equipButton.SetActive(false);
@@ -137,6 +129,11 @@ public class SkinManager : MonoBehaviour
             equipButton.SetActive(true);
             ItemButton[CurrentItemIndex].LockIcon.SetActive(false);
         }
+        if(CurrentItemIndex == user.currentComboSkinIndex)
+        {
+            DisplayEquipped();
+        }
+        else DisplaySelect();
         
     }
 
@@ -157,14 +154,6 @@ public class SkinManager : MonoBehaviour
                 else
                 {
                     ItemButton[i].LockIcon.SetActive(false);
-                    if (i == user.currentShieldIndex && CurrentItemTypeIndex == 2)
-                    {
-                        DisplayEquipped();
-                    }
-                    else
-                    {
-                        DisplaySelect();
-                    }
                 }
             }
             else
@@ -190,6 +179,11 @@ public class SkinManager : MonoBehaviour
             equipButton.SetActive(true);
             ItemButton[CurrentItemIndex].LockIcon.SetActive(false);
         }
+        if(CurrentItemIndex == user.currentShieldIndex)
+        {
+            DisplayEquipped();
+        }
+        else DisplaySelect();
     }
 
     private void DisplayPants()
@@ -209,14 +203,6 @@ public class SkinManager : MonoBehaviour
                 else
                 {
                     ItemButton[i].LockIcon.SetActive(false);
-                    if (i == user.currentPantIndex)
-                    {
-                        DisplayEquipped();
-                    }
-                    else
-                    {
-                        DisplaySelect();
-                    }
                 }
             }
             else
@@ -240,6 +226,12 @@ public class SkinManager : MonoBehaviour
             equipButton.SetActive(true);
             ItemButton[CurrentItemIndex].LockIcon.SetActive(false);
         }
+        if(CurrentItemIndex == user.currentPantIndex)
+        {
+            DisplayEquipped();
+        }
+        else DisplaySelect();
+        
     }
 
     private void DisplayHat()
@@ -258,14 +250,6 @@ public class SkinManager : MonoBehaviour
                 else
                 {
                     ItemButton[i].LockIcon.SetActive(false);
-                    if (i == user.currentHatIndex && CurrentItemTypeIndex == 0)
-                    {
-                        DisplayEquipped();
-                    }
-                    else
-                    {
-                        DisplaySelect();
-                    }
                 }
             }
             else
@@ -289,6 +273,11 @@ public class SkinManager : MonoBehaviour
             equipButton.SetActive(true);
             ItemButton[CurrentItemIndex].LockIcon.SetActive(false);
         }
+        if(CurrentItemIndex == user.currentHatIndex)
+        {
+            DisplayEquipped();
+        }
+        else DisplaySelect();
     }
 
     public void ItemTypeChange(GameObject clickedButton)
@@ -317,6 +306,7 @@ public class SkinManager : MonoBehaviour
                 break;
             }
         }
+
         LoadSkin();
     }
     public void BackToHome()

@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public GameState State;
+    public GameObject coinDisplay;
     public static event Action<GameState> OnGameStateChanged;
     [Header("User Data")]
     [SerializeField] public UserDataManager userDataManager;
@@ -45,27 +46,35 @@ public class GameManager : MonoBehaviour
         {
             case GameState.Loading:
                 Time.timeScale = 1f;
+                coinDisplay.SetActive(false);
                 break;
             case GameState.Home:
                 Time.timeScale = 0f;
+                coinDisplay.SetActive(true);
                 break;
             case GameState.WeaponShop:
                 Time.timeScale = 0f;
+                coinDisplay.SetActive(true);
                 break;
             case GameState.SkinShop:
                 Time.timeScale = 0f;
+                coinDisplay.SetActive(true);
                 break;
             case GameState.GamePlay:
                 Time.timeScale = 1f;
+                coinDisplay.SetActive(false);
                 break;
             case GameState.Settings:
                 Time.timeScale = 0f;
+                coinDisplay.SetActive(false);
                 break;
-            case GameState.Win:
+            case GameState.Result:
                 Time.timeScale = 1f;
+                coinDisplay.SetActive(true);
                 break;
             case GameState.Lose:
                 Time.timeScale = 1f;
+                coinDisplay.SetActive(true);
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(newState),newState,null);
@@ -80,7 +89,7 @@ public class GameManager : MonoBehaviour
         SkinShop,
         GamePlay,
         Settings,
-        Win,
+        Result,
         Lose,
 
         

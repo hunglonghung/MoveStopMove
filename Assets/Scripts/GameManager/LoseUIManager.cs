@@ -59,7 +59,7 @@ public class LoseUIManager : MonoBehaviour
             ResetPlayer();
             if(GameManager.Instance.State == GameState.Lose)
             {
-                GameManager.Instance.UpdateGameState(GameState.Home);
+                GameManager.Instance.UpdateGameState(GameState.Result);
                 AudioManager.instance.PlayButtonSoundClip();
             }
             time = 6f;

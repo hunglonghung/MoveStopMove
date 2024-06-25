@@ -109,8 +109,8 @@ public class Character : MonoBehaviour
         if (CurrentBullet != null)
         {
             AudioManager.instance.PlayWeaponSoundClip();
-            Debug.Log("currentBullet" + CurrentBullet.transform.position);
-            Debug.Log("gameObject " + gameObject.transform.position);
+            // Debug.Log("currentBullet" + CurrentBullet.transform.position);
+            // Debug.Log("gameObject " + gameObject.transform.position);
             CurrentBullet.transform.position = gameObject.transform.position;
             Vector3 originalScale = BulletPool.Instance.GetOriginalScale(WeaponType);
             CurrentBullet.transform.localScale = originalScale * SizeMultiplier;

@@ -13,6 +13,7 @@ public class GameplayManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI aliveText;
     [SerializeField] public UserData user;
     [SerializeField] public int AlivePlayers = 100;
+    [SerializeField] public Player player;
     void Awake()
     {
         GameManager.OnGameStateChanged += GameManagerOnOnGameStateChanged;
@@ -39,9 +40,10 @@ public class GameplayManager : MonoBehaviour
     }
     public void SetAliveText()
     {
-        Debug.Log("doing" + AlivePlayers);
+        Debug.Log("Before updating text: " + AlivePlayers); // Debug here
         aliveText.text = "Alive: " + AlivePlayers;
-        AlivePlayers --;
+        Debug.Log("After updating text: " + AlivePlayers); // Debug here
+
 
     }
     public void MoveToLoseUI()

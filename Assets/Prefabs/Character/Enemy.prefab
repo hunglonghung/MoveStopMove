@@ -436,7 +436,9 @@ MonoBehaviour:
   Weapon: {fileID: 11400000, guid: 93831032f5ac1463387866397e026ba0, type: 2}
   WeaponType: 0
   CharacterSkin: {fileID: 4596437952122117705}
-  Hand: {fileID: 4968668395240909984}
+  RightHand: {fileID: 4968668395240909984}
+  LeftHand: {fileID: 5590543582846365862}
+  Shield: {fileID: 0}
   Gun: {fileID: 0}
   Pants: {fileID: 1608628916320992354}
   PantsMaterial: {fileID: 0}
@@ -496,6 +498,11 @@ GameObject:
 --- !u!1 &4968668395240909984 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8542655298583481684, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
+  m_PrefabInstance: {fileID: 5586193966310219276}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5590543582846365862 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -9217817218132447574, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
   m_PrefabInstance: {fileID: 5586193966310219276}
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &7383250129619572844 stripped

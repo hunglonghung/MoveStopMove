@@ -29,7 +29,9 @@ public class Character : MonoBehaviour
     [SerializeField] public WeaponData Weapon;
     [SerializeField] public WeaponType WeaponType;
     [SerializeField] public GameObject CharacterSkin;
-    [SerializeField] public GameObject Hand;
+    [SerializeField] public GameObject RightHand;
+    [SerializeField] public GameObject LeftHand;
+    [SerializeField] public GameObject Shield;
     [SerializeField] public GameObject Gun;
     [SerializeField] public GameObject Pants;
     [SerializeField] public Material PantsMaterial;
@@ -128,7 +130,7 @@ public class Character : MonoBehaviour
         WeaponType = weaponData.GetWeaponType(randomIndex);
         if(Gun != null)
         {   
-            GameObject characterWeapon = Instantiate(Gun, Hand.transform.position, Quaternion.identity, Hand.transform);
+            GameObject characterWeapon = Instantiate(Gun, RightHand.transform.position, Quaternion.identity, RightHand.transform);
             characterWeapon.transform.rotation = Quaternion.Euler(180, 90, 0);
         }
         // Debug.Log(WeaponType + "and" + Weapon.GetBulletByWeaponType(WeaponType));

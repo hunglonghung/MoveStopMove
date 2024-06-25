@@ -18,6 +18,8 @@ public class HomeManager : MonoBehaviour
     [SerializeField] private GameObject VibrationOffHomeButton;
     [SerializeField] private GameObject VibrationOnHomeButton;
     [SerializeField] private SettingsManager settingsManager;
+    [SerializeField] private WeaponManager weaponManager;
+    [SerializeField] private SkinManager skinManager;
     float time;
     private bool isSound = true; 
     void Awake()
@@ -87,6 +89,9 @@ public class HomeManager : MonoBehaviour
     {
         UserDataManager.Instance.ResetUserDataToDefault();
         SetCoin();
+        weaponManager.Start();
+        skinManager.Start();
+
     }
 
 }

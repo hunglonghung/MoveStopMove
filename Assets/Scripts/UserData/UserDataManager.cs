@@ -13,6 +13,7 @@ public class UserDataManager : Singleton<UserDataManager>
         LoadUserData();
     }
 
+
     private void LoadUserID()
     {
         if (!PlayerPrefs.HasKey(userID))

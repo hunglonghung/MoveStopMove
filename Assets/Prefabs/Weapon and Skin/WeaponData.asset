@@ -15,7 +15,7 @@ MonoBehaviour:
   weaponList:
   - weaponType: 0
     weapon:
-      gun: {fileID: 3156978846926404867, guid: ac715c9708bb94805acbc1a3019be2fa, type: 3}
+      gun: {fileID: 3156978846926404867, guid: b5ec2bdb0492740b3b5b0ad4931d25a6, type: 3}
       bullet: {fileID: 3156978846926404867, guid: ac715c9708bb94805acbc1a3019be2fa, type: 3}
     price: 50
     sprite: {fileID: 21300000, guid: 79b2087be051fea43b9c8f51637d0764, type: 3}
@@ -23,7 +23,7 @@ MonoBehaviour:
     WeaponObject: {fileID: 3156978846926404867, guid: ac715c9708bb94805acbc1a3019be2fa, type: 3}
   - weaponType: 1
     weapon:
-      gun: {fileID: 8267625211698420981, guid: c92fb3c9b8a1b44b38abb4bf476a139c, type: 3}
+      gun: {fileID: 8267625211698420981, guid: 76b747a841437499299862b8c20662b9, type: 3}
       bullet: {fileID: 8267625211698420981, guid: c92fb3c9b8a1b44b38abb4bf476a139c, type: 3}
     price: 100
     sprite: {fileID: 21300000, guid: 33c349a86a058c34196d38bf8d1d2ca9, type: 3}
@@ -31,7 +31,7 @@ MonoBehaviour:
     WeaponObject: {fileID: 8267625211698420981, guid: c92fb3c9b8a1b44b38abb4bf476a139c, type: 3}
   - weaponType: 2
     weapon:
-      gun: {fileID: 6511858493402134245, guid: 8ce0da899c76a465bb6365b78c971285, type: 3}
+      gun: {fileID: 6511858493402134245, guid: 4282811a7e61d48939e4f9e79375ac70, type: 3}
       bullet: {fileID: 6511858493402134245, guid: 8ce0da899c76a465bb6365b78c971285, type: 3}
     price: 150
     sprite: {fileID: 21300000, guid: 2dbdf917bda18854c9feb89adc0a75f7, type: 3}
@@ -39,7 +39,7 @@ MonoBehaviour:
     WeaponObject: {fileID: 6511858493402134245, guid: 8ce0da899c76a465bb6365b78c971285, type: 3}
   - weaponType: 3
     weapon:
-      gun: {fileID: 362137616735914780, guid: 128ca77c19d5b435aa4d7526705aa300, type: 3}
+      gun: {fileID: 362137616735914780, guid: 98e6d7dca9f3d4745b5b8e08ce09c876, type: 3}
       bullet: {fileID: 362137616735914780, guid: 128ca77c19d5b435aa4d7526705aa300, type: 3}
     price: 400
     sprite: {fileID: 21300000, guid: f5743b959fcfd4c93bd4af6b1c11376b, type: 3}
@@ -47,7 +47,7 @@ MonoBehaviour:
     WeaponObject: {fileID: 362137616735914780, guid: 128ca77c19d5b435aa4d7526705aa300, type: 3}
   - weaponType: 4
     weapon:
-      gun: {fileID: 5267689243999776171, guid: d85692b345bb24d549d3a4e8f01300fb, type: 3}
+      gun: {fileID: 5267689243999776171, guid: 0997206c8105e467780be71e751586e9, type: 3}
       bullet: {fileID: 5267689243999776171, guid: d85692b345bb24d549d3a4e8f01300fb, type: 3}
     price: 800
     sprite: {fileID: 21300000, guid: 3af6351134a980440a9abb799a182e85, type: 3}
@@ -55,7 +55,7 @@ MonoBehaviour:
     WeaponObject: {fileID: 5267689243999776171, guid: d85692b345bb24d549d3a4e8f01300fb, type: 3}
   - weaponType: 5
     weapon:
-      gun: {fileID: 7231383130076873581, guid: f6bb787373fae42a28573a48042be936, type: 3}
+      gun: {fileID: 7231383130076873581, guid: 72ee9bcd736944120889faa539f1eb43, type: 3}
       bullet: {fileID: 7231383130076873581, guid: f6bb787373fae42a28573a48042be936, type: 3}
     price: 1000
     sprite: {fileID: 21300000, guid: 724e4328a30d97c4fa51f406c3ff007d, type: 3}
@@ -63,7 +63,7 @@ MonoBehaviour:
     WeaponObject: {fileID: 7231383130076873581, guid: f6bb787373fae42a28573a48042be936, type: 3}
   - weaponType: 6
     weapon:
-      gun: {fileID: 4569114147625522867, guid: ae66e3d4035f941179ab42c20b1bdfa5, type: 3}
+      gun: {fileID: 4569114147625522867, guid: 00c9aaf7a982146c7aa0d73e43983e89, type: 3}
       bullet: {fileID: 4569114147625522867, guid: ae66e3d4035f941179ab42c20b1bdfa5, type: 3}
     price: 1250
     sprite: {fileID: 21300000, guid: e5bec95c649444aaaa86936abc509a93, type: 3}
@@ -71,7 +71,7 @@ MonoBehaviour:
     WeaponObject: {fileID: 4569114147625522867, guid: ae66e3d4035f941179ab42c20b1bdfa5, type: 3}
   - weaponType: 7
     weapon:
-      gun: {fileID: 187254405859972868, guid: ea18301a8384041b49445979edbb1550, type: 3}
+      gun: {fileID: 187254405859972868, guid: 835a539ecfc2845a6b1d4945e36e51bd, type: 3}
       bullet: {fileID: 187254405859972868, guid: ea18301a8384041b49445979edbb1550, type: 3}
     price: 1500
     sprite: {fileID: 21300000, guid: 1201b9bbf9a4c454ab51ef2877bb4205, type: 3}
@@ -79,7 +79,7 @@ MonoBehaviour:
     WeaponObject: {fileID: 187254405859972868, guid: ea18301a8384041b49445979edbb1550, type: 3}
   - weaponType: 8
     weapon:
-      gun: {fileID: 2688547913124262168, guid: 2b0fbdb1dbfa34f97856140216e24e60, type: 3}
+      gun: {fileID: 2688547913124262168, guid: 58fc30ba3e279485a9ed897ac4d75f8d, type: 3}
       bullet: {fileID: 2688547913124262168, guid: 2b0fbdb1dbfa34f97856140216e24e60, type: 3}
     price: 2000
     sprite: {fileID: 21300000, guid: 1edfdc8f88b1e437b9aecc35b7f1855e, type: 3}
@@ -87,7 +87,7 @@ MonoBehaviour:
     WeaponObject: {fileID: 2688547913124262168, guid: 2b0fbdb1dbfa34f97856140216e24e60, type: 3}
   - weaponType: 9
     weapon:
-      gun: {fileID: 4339586279122964821, guid: 39b5f08a4574c4911a7decf9badea802, type: 3}
+      gun: {fileID: 4339586279122964821, guid: 967d9a7372ae2451fb71af85283ebe7f, type: 3}
       bullet: {fileID: 4339586279122964821, guid: 39b5f08a4574c4911a7decf9badea802, type: 3}
     price: 3000
     sprite: {fileID: 21300000, guid: 79b2087be051fea43b9c8f51637d0764, type: 3}
@@ -95,7 +95,7 @@ MonoBehaviour:
     WeaponObject: {fileID: 4339586279122964821, guid: 39b5f08a4574c4911a7decf9badea802, type: 3}
   - weaponType: 10
     weapon:
-      gun: {fileID: 4311063824449088501, guid: 286268e4d92be4533ba72a4e3bc82ec3, type: 3}
+      gun: {fileID: 4311063824449088501, guid: 6023054a05af64ef1b1dfb6c1f267a39, type: 3}
       bullet: {fileID: 4311063824449088501, guid: 286268e4d92be4533ba72a4e3bc82ec3, type: 3}
     price: 4500
     sprite: {fileID: 21300000, guid: 317ab2e33cd06af499894eac0b795074, type: 3}

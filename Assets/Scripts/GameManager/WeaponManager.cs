@@ -25,6 +25,8 @@ public class WeaponManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI coinPurchaseButtonText;
     [SerializeField] private GameObject videoButton;
     [SerializeField] public UserData user;
+    [Header("Player")]
+    [SerializeField] private Player player;
     void Awake()
     {
         Debug.Log("this is weapon");
@@ -37,7 +39,7 @@ public class WeaponManager : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         SetCoin();
         LoadWeapon();
@@ -123,6 +125,7 @@ public class WeaponManager : MonoBehaviour
         user.currentWeaponIndex = CurrentWeaponIndex;
         GameManager.Instance.userDataManager.SaveUserData();
         LoadWeapon();
+        player.Start();
 
     }
     public void BackToHome()

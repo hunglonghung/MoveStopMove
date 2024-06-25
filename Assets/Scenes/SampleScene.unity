@@ -3514,7 +3514,7 @@ Transform:
   m_GameObject: {fileID: 345257364}
   serializedVersion: 2
   m_LocalRotation: {x: 0.25949654, y: -0.001536433, z: 0.00041296086, w: 0.96574277}
-  m_LocalPosition: {x: 1.8853514, y: 15.537667, z: -35.024868}
+  m_LocalPosition: {x: 1.8688318, y: 12.530376, z: -29.83296}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4012,6 +4012,11 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!1 &456048897 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7769985909291098951, guid: 8290b8fa9f06b401cb37380dc906a938, type: 3}
+  m_PrefabInstance: {fileID: 2826966250776077164}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &456440191
 GameObject:
   m_ObjectHideFlags: 0
@@ -9180,7 +9185,7 @@ Transform:
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
   m_LocalRotation: {x: 0.25949654, y: -0.001536433, z: 0.00041296086, w: 0.96574277}
-  m_LocalPosition: {x: 1.8853514, y: 15.537667, z: -35.024868}
+  m_LocalPosition: {x: 1.8688318, y: 12.530376, z: -29.83296}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9893,6 +9898,7 @@ MonoBehaviour:
     pantState: 0000000000000000000000000000000000000000000000000000000000000000
     shieldState: 000000000000000000000000
     comboSkinState: 000000000000000000000000
+  player: {fileID: 1771102883}
 --- !u!1 &1058719593
 GameObject:
   m_ObjectHideFlags: 0
@@ -11879,7 +11885,7 @@ MonoBehaviour:
   m_TargetMovementOnly: 1
   m_ScreenX: 0.5
   m_ScreenY: 0.5
-  m_CameraDistance: 31
+  m_CameraDistance: 25
   m_DeadZoneWidth: 0
   m_DeadZoneHeight: 0
   m_DeadZoneDepth: 0
@@ -14046,6 +14052,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1444793428}
   m_CullTransparentMesh: 1
+--- !u!1 &1468526312 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7112680608340967233, guid: 8290b8fa9f06b401cb37380dc906a938, type: 3}
+  m_PrefabInstance: {fileID: 2826966250776077164}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1478096875
 GameObject:
   m_ObjectHideFlags: 0
@@ -19012,6 +19023,8 @@ MonoBehaviour:
   VibrationOffHomeButton: {fileID: 886819250}
   VibrationOnHomeButton: {fileID: 268274445}
   settingsManager: {fileID: 1034552245}
+  weaponManager: {fileID: 1057116936}
+  skinManager: {fileID: 2038806892}
 --- !u!1 &2021537109
 GameObject:
   m_ObjectHideFlags: 0
@@ -19314,6 +19327,7 @@ MonoBehaviour:
     pantState: 0000000000000000000000000000000000000000
     shieldState: 0000000000000000
     comboSkinState: 0000000000000000000000000000000000000000
+  player: {fileID: 1771102883}
 --- !u!1 &2076907744
 GameObject:
   m_ObjectHideFlags: 0
@@ -23974,6 +23988,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8698885121846048852, guid: 8290b8fa9f06b401cb37380dc906a938, type: 3}
+      propertyPath: LeftHand
+      value: 
+      objectReference: {fileID: 1468526312}
+    - target: {fileID: 8698885121846048852, guid: 8290b8fa9f06b401cb37380dc906a938, type: 3}
+      propertyPath: RightHand
+      value: 
+      objectReference: {fileID: 456048897}
     - target: {fileID: 8698885121846048852, guid: 8290b8fa9f06b401cb37380dc906a938, type: 3}
       propertyPath: BotSpawner
       value: 

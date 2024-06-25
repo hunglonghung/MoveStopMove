@@ -26,6 +26,8 @@ public class SkinManager : MonoBehaviour
     [SerializeField] private GameObject videoButton;
     [Header("User Data")]
     [SerializeField] private UserData user;
+    [Header("Player")]
+    [SerializeField] private Player player;
     void Awake()
     {
         Debug.Log("this is weapon");
@@ -38,7 +40,7 @@ public class SkinManager : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         SetCoin();
         LoadSkin();
@@ -378,6 +380,7 @@ public class SkinManager : MonoBehaviour
             }
         }
         LoadSkin();
+        player.Start();
     }
     public void DisplayEquipped()
     {

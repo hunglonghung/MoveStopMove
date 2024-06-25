@@ -11,8 +11,14 @@ public class Player : Character
     [Header("Camera")]
     [SerializeField] public CinemachineVirtualCamera PlayerCamera;
     [Header("Target")]
-    [SerializeField] public GameObject TargetPrefab;
     private GameObject targetObject;
+    [SerializeField] public GameObject TargetPrefab;
+    [Header("Skin")]
+    [SerializeField] List<GameObject> playerHat = new List<GameObject>();
+    [SerializeField] List<GameObject> playerShield = new List<GameObject>();
+    [Header("Gun")]
+    [SerializeField] List<GameObject> playerWeapon = new List<GameObject>();
+
 
     public override void Start()
     {
@@ -34,14 +40,41 @@ public class Player : Character
     public override void SetSkin(SkinData skinData)
     {
         UserData user = GameManager.Instance.userDataManager.userData;
+        PantsMaterial = skinData.GetPants(user.currentPantIndex).GetPantsMaterial();
+        Pants.GetComponent<Renderer>().material = PantsMaterial;
         Hat = skinData.GetHat(user.currentHatIndex).GetHatGameObject();
         if (Hat != null)
         {
-            GameObject botHat = Instantiate(Hat, Head.transform.position, Quaternion.identity, Head.transform);
-            botHat.transform.position += Vector3.up * 0.4f;
+            if(playerHat.Count == 0)
+            {
+                playerHat.Add(Instantiate(Hat, Head.transform.position + Vector3.up * 0.6f, Quaternion.identity, Head.transform));
+            }
+            else
+            {
+                for(int i = 0; i < playerHat.Count; i++)
+                {
+                    Destroy(playerHat[i]);
+                } 
+                playerHat.Add(Instantiate(Hat, Head.transform.position + Vector3.up * 0.6f, Quaternion.identity, Head.transform));
+            }
         }
-        PantsMaterial = skinData.GetPants(user.currentPantIndex).GetPantsMaterial();
-        Pants.GetComponent<Renderer>().material = PantsMaterial;
+        Shield = skinData.GetShield(user.currentShieldIndex).GetShieldGameObject();
+        if(Shield != null)
+        {
+            if(playerShield.Count == 0)
+            {
+                playerShield.Add(Instantiate(Shield, LeftHand.transform.position, Quaternion.identity, LeftHand.transform));
+            }
+            else
+            {
+                for(int i = 0; i < playerShield.Count; i++)
+                {
+                    Destroy(playerShield[i]);
+                } 
+                playerShield.Add(Instantiate(Shield, LeftHand.transform.position, Quaternion.identity, LeftHand.transform));
+            }
+        }
+
     }
     public override void SetWeapon(WeaponData weaponData)
     {
@@ -51,9 +84,19 @@ public class Player : Character
         Gun = weaponData.GetGun(user.currentWeaponIndex);   
         if(Gun != null)
         {   
-            GameObject characterWeapon = Instantiate(Gun, Hand.transform.position, Quaternion.identity, Hand.transform);
-            characterWeapon.SetActive(true);
-            characterWeapon.transform.rotation = Quaternion.Euler(180, 90, 0);
+            GameObject characterWeapon = Instantiate(Gun, RightHand.transform.position, Quaternion.Euler(180, 90, 0), RightHand.transform);
+            if(playerWeapon.Count == 0)
+            {
+                playerWeapon.Add(characterWeapon);
+            }
+            else
+            {
+                for(int i = 0; i < playerWeapon.Count; i++)
+                {
+                    Destroy(playerWeapon[i]);
+                } 
+                playerWeapon.Add(characterWeapon);
+            }
         }
         // Debug.Log(WeaponType + "and" + Weapon.GetBulletByWeaponType(WeaponType));
         BulletPool.Instance.CreateBulletPool(WeaponType, Weapon.GetBulletByWeaponType(WeaponType));

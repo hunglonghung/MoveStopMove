@@ -20,6 +20,8 @@ public class HomeManager : MonoBehaviour
     [SerializeField] private SettingsManager settingsManager;
     [SerializeField] private WeaponManager weaponManager;
     [SerializeField] private SkinManager skinManager;
+    [SerializeField] public List<GameObject> Map;
+    [SerializeField] public GameplayManager gameplayManager;
     float time;
     private bool isSound = true; 
     void Awake()
@@ -37,6 +39,17 @@ public class HomeManager : MonoBehaviour
     {
         SetCoin();
         DisplaySettings();
+        for(int i = 0; i < Map.Count; i++)
+        {
+            if(i == user.levelNumber)
+            {
+                Map[i].SetActive(true);
+            }
+            else
+            {
+                Map[i].SetActive(false);
+            }
+        }
     }
 
     // Update is called once per frame
@@ -65,6 +78,8 @@ public class HomeManager : MonoBehaviour
     }
     public void StartGame()
     {
+        gameplayManager.AlivePlayers = 100;
+        gameplayManager.SetAliveText(gameplayManager.AlivePlayers);
         player.SetWeapon(player.Weapon);
         player.SetSkin(player.Skin);
         GameManager.Instance.UpdateGameState(GameState.GamePlay);

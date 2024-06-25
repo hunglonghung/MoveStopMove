@@ -332,6 +332,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 19489604}
   m_CullTransparentMesh: 1
+--- !u!1 &22039134 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3602966409889159755, guid: ce559d0b5702741c8bd23339148f620c, type: 3}
+  m_PrefabInstance: {fileID: 73216377177992369}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &29689475
 GameObject:
   m_ObjectHideFlags: 0
@@ -3514,7 +3519,7 @@ Transform:
   m_GameObject: {fileID: 345257364}
   serializedVersion: 2
   m_LocalRotation: {x: 0.25949654, y: -0.001536433, z: 0.00041296086, w: 0.96574277}
-  m_LocalPosition: {x: 1.8688318, y: 12.530376, z: -29.83296}
+  m_LocalPosition: {x: 1.8853514, y: 15.537667, z: -35.024868}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8572,6 +8577,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 886819250}
   m_CullTransparentMesh: 1
+--- !u!1 &903129701 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8498623379305935080, guid: 869835af9a36543f7a621a931b5d6df7, type: 3}
+  m_PrefabInstance: {fileID: 767841965835703562}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &910605162
 GameObject:
   m_ObjectHideFlags: 0
@@ -9185,7 +9195,7 @@ Transform:
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
   m_LocalRotation: {x: 0.25949654, y: -0.001536433, z: 0.00041296086, w: 0.96574277}
-  m_LocalPosition: {x: 1.8688318, y: 12.530376, z: -29.83296}
+  m_LocalPosition: {x: 1.8853514, y: 15.537667, z: -35.024868}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11885,7 +11895,7 @@ MonoBehaviour:
   m_TargetMovementOnly: 1
   m_ScreenX: 0.5
   m_ScreenY: 0.5
-  m_CameraDistance: 25
+  m_CameraDistance: 31
   m_DeadZoneWidth: 0
   m_DeadZoneHeight: 0
   m_DeadZoneDepth: 0
@@ -18169,6 +18179,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   State: 0
   coinDisplay: {fileID: 1859308473}
+  targetIndicator: {fileID: 1158842439}
   userDataManager: {fileID: 300569361}
 --- !u!4 &1937975379
 Transform:
@@ -19025,6 +19036,16 @@ MonoBehaviour:
   settingsManager: {fileID: 1034552245}
   weaponManager: {fileID: 1057116936}
   skinManager: {fileID: 2038806892}
+  Map:
+  - {fileID: 22039134}
+  - {fileID: 2008501157}
+  - {fileID: 903129701}
+  gameplayManager: {fileID: 1737057392828224030}
+--- !u!1 &2008501157 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4632963257220151823, guid: 4f2e9b03d4a7b4fc5b223bf7c35924ee, type: 3}
+  m_PrefabInstance: {fileID: 4271522273038415307}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2021537109
 GameObject:
   m_ObjectHideFlags: 0

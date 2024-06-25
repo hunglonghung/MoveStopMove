@@ -25,6 +25,7 @@ public class GameplayManager : MonoBehaviour
     }
     void Start()
     {
+        user = Instance.userDataManager.userData;
         SetAliveText(AlivePlayers);
         AlivePlayers = 100;
         

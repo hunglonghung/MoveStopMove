@@ -63,7 +63,7 @@ public class Player : Character
         {
             if(playerShield.Count == 0)
             {
-                playerShield.Add(Instantiate(Shield, LeftHand.transform.position, Quaternion.identity, LeftHand.transform));
+                playerShield.Add(Instantiate(Shield, LeftHand.transform.position, Quaternion.Euler(70,-22,-243), LeftHand.transform));
             }
             else
             {
@@ -71,7 +71,7 @@ public class Player : Character
                 {
                     Destroy(playerShield[i]);
                 } 
-                playerShield.Add(Instantiate(Shield, LeftHand.transform.position, Quaternion.identity, LeftHand.transform));
+                playerShield.Add(Instantiate(Shield, LeftHand.transform.position, Quaternion.Euler(70,-22,-243), LeftHand.transform));
             }
         }
 

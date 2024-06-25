@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public GameState State;
     public GameObject coinDisplay;
+    public GameObject targetIndicator;
     public static event Action<GameState> OnGameStateChanged;
     [Header("User Data")]
     [SerializeField] public UserDataManager userDataManager;
@@ -47,34 +48,42 @@ public class GameManager : MonoBehaviour
             case GameState.Loading:
                 Time.timeScale = 1f;
                 coinDisplay.SetActive(false);
+                targetIndicator.SetActive(false);
                 break;
             case GameState.Home:
                 Time.timeScale = 0f;
                 coinDisplay.SetActive(true);
+                targetIndicator.SetActive(false);
                 break;
             case GameState.WeaponShop:
                 Time.timeScale = 0f;
                 coinDisplay.SetActive(true);
+                targetIndicator.SetActive(false);
                 break;
             case GameState.SkinShop:
                 Time.timeScale = 0f;
                 coinDisplay.SetActive(true);
+                targetIndicator.SetActive(false);
                 break;
             case GameState.GamePlay:
                 Time.timeScale = 1f;
                 coinDisplay.SetActive(false);
+                targetIndicator.SetActive(true);
                 break;
             case GameState.Settings:
                 Time.timeScale = 0f;
                 coinDisplay.SetActive(false);
+                targetIndicator.SetActive(false);
                 break;
             case GameState.Result:
                 Time.timeScale = 1f;
                 coinDisplay.SetActive(true);
+                targetIndicator.SetActive(false);
                 break;
             case GameState.Lose:
                 Time.timeScale = 1f;
                 coinDisplay.SetActive(true);
+                targetIndicator.SetActive(false);
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(newState),newState,null);

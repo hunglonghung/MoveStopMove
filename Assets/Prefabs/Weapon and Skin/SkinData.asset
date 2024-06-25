@@ -16,69 +16,86 @@ MonoBehaviour:
   - SkinSprite: {fileID: 21300000, guid: 9f8e6f5ea0f849447b464193072ab6f3, type: 3}
     SkinPrice: 1000
     status: +10 Size
+    SkinObject: {fileID: 0}
   - SkinSprite: {fileID: 21300000, guid: 7965f490c2ec6044d854d957fe85186e, type: 3}
     SkinPrice: 4000
     status: +10 Range
+    SkinObject: {fileID: 0}
   - SkinSprite: {fileID: 21300000, guid: 591bf6bd34c3a3c4e9143ba55a6c7d7b, type: 3}
     SkinPrice: 6000
     status: +15 Range
+    SkinObject: {fileID: 0}
   - SkinSprite: {fileID: 21300000, guid: 916eb971e2dc28b419a242fa6950df78, type: 3}
     SkinPrice: 1500
     status: +5 Size
+    SkinObject: {fileID: 0}
   - SkinSprite: {fileID: 21300000, guid: 0363a7557b133774f99bf84dcf6fcbed, type: 3}
     SkinPrice: 6000
     status: +15 Size
+    SkinObject: {fileID: 0}
   HatList:
   - HatGameObject: {fileID: 3085702443173169776, guid: da3d596d3858746e39ccf4cd83a9f83c, type: 3}
     HatSprite: {fileID: 21300000, guid: 7ecc7cd28cb66fb41ac2e56ca5e22d5c, type: 3}
     HatPrice: 1000
     status: 
+    HatObject: {fileID: 0}
   - HatGameObject: {fileID: 4604666586082490318, guid: c1cda6a9f962045c5bbaf87a975cf629, type: 3}
     HatSprite: {fileID: 21300000, guid: 76e934370403f35428e37cc379bed4c7, type: 3}
     HatPrice: 1500
     status: 
+    HatObject: {fileID: 0}
   - HatGameObject: {fileID: 5376021047788346049, guid: fe556420c24114a13b56aba64f486b41, type: 3}
     HatSprite: {fileID: 21300000, guid: 694f596b7929bdb409ba3630631783d9, type: 3}
     HatPrice: 200
     status: 
+    HatObject: {fileID: 0}
   - HatGameObject: {fileID: 1827652136198243161, guid: 6c4707eca5ccd4a189c12349f32720a4, type: 3}
     HatSprite: {fileID: 21300000, guid: c72f60a9ff619e54ea03f81d8477c714, type: 3}
     HatPrice: 2000
     status: 
+    HatObject: {fileID: 0}
   - HatGameObject: {fileID: 1776292689594740121, guid: a15bd99f279ba4a56853218117fd6373, type: 3}
     HatSprite: {fileID: 21300000, guid: 0721f07e295ea594ba265006fe888315, type: 3}
     HatPrice: 50
     status: 
+    HatObject: {fileID: 0}
   ShieldList:
-  - ShieldGameObject: {fileID: -927199367670048503, guid: abacd27a29db41e4ba28b7701abd7878, type: 3}
+  - ShieldGameObject: {fileID: 1423921444343856639, guid: 627aa4e8d63fd4b0082ee87657cf8aff, type: 3}
     ShieldSprite: {fileID: 21300000, guid: 747d642799c526143b4b58d8bb495bc4, type: 3}
     ShieldPrice: 500
     status: 
-  - ShieldGameObject: {fileID: -927199367670048503, guid: abacd27a29db41e4ba28b7701abd7878, type: 3}
+    ShieldObject: {fileID: 0}
+  - ShieldGameObject: {fileID: 8396420616918049083, guid: 45e6134f846e245e6acc301e07c811f9, type: 3}
     ShieldSprite: {fileID: 21300000, guid: a66d4c558c1448f44a9eff655827912f, type: 3}
     ShieldPrice: 2000
     status: 
+    ShieldObject: {fileID: 0}
   PantsList:
   - pantsMaterial: {fileID: 2100000, guid: 519fe714c5b8b4ff5bc8cd33d20e600c, type: 2}
     pantsSprite: {fileID: 21300000, guid: 6d8c21d8e55123441ba02ac0fce3d675, type: 3}
     pantsPrice: 50
     status: 
+    PantsObject: {fileID: 0}
   - pantsMaterial: {fileID: 2100000, guid: dde3eb48ee3194fb4a93b2c5f8009558, type: 2}
     pantsSprite: {fileID: 21300000, guid: bf6c3011d09de5645b20958b4178cdf7, type: 3}
     pantsPrice: 150
     status: 
+    PantsObject: {fileID: 0}
   - pantsMaterial: {fileID: 2100000, guid: b02e7dbc638a842118ea28c4770ad355, type: 2}
     pantsSprite: {fileID: 21300000, guid: a482b056a7db15c449864b0f6737a4cb, type: 3}
     pantsPrice: 400
     status: 
+    PantsObject: {fileID: 0}
   - pantsMaterial: {fileID: 2100000, guid: 8db117ecec09f426fb9fd3bf4ae16ba5, type: 2}
     pantsSprite: {fileID: 21300000, guid: 17737506398ad284aa00a46f0508ac61, type: 3}
     pantsPrice: 800
     status: 
+    PantsObject: {fileID: 0}
   - pantsMaterial: {fileID: 2100000, guid: d592da6c9abf24562bb64c9c7eac516a, type: 2}
     pantsSprite: {fileID: 21300000, guid: ce130da2d9627654994c26c5c9da1967, type: 3}
     pantsPrice: 1000
     status: 
+    PantsObject: {fileID: 0}
   ColorList:
   - {r: 0, g: 0.5338999, b: 0.9716981, a: 0}
   - {r: 0.024262667, g: 1, b: 0, a: 0}

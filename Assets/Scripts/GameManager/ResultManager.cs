@@ -59,7 +59,7 @@ public class ResultManager : MonoBehaviour
     }
     public void DisplayRanking()
     {
-        rankingText.SetText((gameplayManager.AlivePlayers ).ToString());
+        rankingText.SetText("#" + (gameplayManager.AlivePlayers ).ToString());
     }
     public void DisplayCoin()
     {
@@ -76,9 +76,14 @@ public class ResultManager : MonoBehaviour
     }
     public void AddCoin()
     {
+        prize = (100 - gameplayManager.AlivePlayers  ) * 50;
         UserData user = Instance.userDataManager.userData;
         user.coin += prize;
         user.levelNumber ++;
+        if(user.levelNumber > 2)
+        {
+            user.levelNumber = UnityEngine.Random.Range(0,2);
+        }
         FindObjectOfType<HomeManager>().SetCoin();
     }
 

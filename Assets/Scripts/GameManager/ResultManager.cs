@@ -13,7 +13,10 @@ public class ResultManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI rankingText;
     [SerializeField] private TextMeshProUGUI coinText;
     [SerializeField] private GameplayManager gameplayManager;
+    [SerializeField] private HomeManager homeManager;
+    [SerializeField] public int BestRank = 100;
     [SerializeField] private int prize;
+    [SerializeField] private UserData user;
     
     void Awake()
     {
@@ -28,7 +31,8 @@ public class ResultManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        user = Instance.userDataManager.userData;
+        homeManager = FindObjectOfType<HomeManager>();
     }
 
     // Update is called once per frame
@@ -59,6 +63,7 @@ public class ResultManager : MonoBehaviour
     }
     public void DisplayRanking()
     {
+        BestRank = Math.Min(gameplayManager.AlivePlayers,BestRank);
         rankingText.SetText("#" + (gameplayManager.AlivePlayers ).ToString());
     }
     public void DisplayCoin()
@@ -72,18 +77,20 @@ public class ResultManager : MonoBehaviour
     }
     public void BackToHome()
     {
+        homeManager.HomeSetUp();
+        user.levelNumber ++;
+        if(user.levelNumber > 2)
+        {
+            user.levelNumber = UnityEngine.Random.Range(0,2);
+        }
         GameManager.Instance.UpdateGameState(GameState.Home);
+        
     }
     public void AddCoin()
     {
         prize = (100 - gameplayManager.AlivePlayers  ) * 50;
         UserData user = Instance.userDataManager.userData;
         user.coin += prize;
-        user.levelNumber ++;
-        if(user.levelNumber > 2)
-        {
-            user.levelNumber = UnityEngine.Random.Range(0,2);
-        }
         FindObjectOfType<HomeManager>().SetCoin();
     }
 

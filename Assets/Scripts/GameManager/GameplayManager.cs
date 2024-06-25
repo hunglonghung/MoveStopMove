@@ -40,10 +40,8 @@ public class GameplayManager : MonoBehaviour
     }
     public void SetAliveText(int AlivePlayers)
     {
-        Debug.Log("Before updating text: " + AlivePlayers); // Debug here
         aliveText.text = "Alive: " + AlivePlayers;
         AlivePlayers--;
-        Debug.Log("After updating text: " + AlivePlayers); // Debug here
 
 
     }

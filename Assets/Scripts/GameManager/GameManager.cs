@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviour
                 targetIndicator.SetActive(false);
                 break;
             case GameState.Result:
-                Time.timeScale = 1f;
+                Time.timeScale = 0f;
                 coinDisplay.SetActive(true);
                 targetIndicator.SetActive(false);
                 break;

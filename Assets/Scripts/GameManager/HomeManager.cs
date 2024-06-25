@@ -22,6 +22,9 @@ public class HomeManager : MonoBehaviour
     [SerializeField] private SkinManager skinManager;
     [SerializeField] public List<GameObject> Map;
     [SerializeField] public GameplayManager gameplayManager;
+    [SerializeField] public ResultManager resultManager;
+    [SerializeField] public TextMeshProUGUI ZoneText;
+    [SerializeField] public TextMeshProUGUI BestRank;
     float time;
     private bool isSound = true; 
     void Awake()
@@ -35,8 +38,18 @@ public class HomeManager : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
+        HomeSetUp();
+    }
+
+    public void HomeSetUp()
+    {
+        Debug.Log(user.levelNumber);
+        Debug.Log(resultManager.BestRank);
+        user = Instance.userDataManager.userData;
+        ZoneText.SetText("ZONE: " + (user.levelNumber + 1));
+        BestRank.SetText("BEST: #" + (resultManager.BestRank));
         SetCoin();
         DisplaySettings();
         for(int i = 0; i < Map.Count; i++)
@@ -44,10 +57,12 @@ public class HomeManager : MonoBehaviour
             if(i == user.levelNumber)
             {
                 Map[i].SetActive(true);
+                Debug.Log(i +" " + user.levelNumber);
             }
             else
             {
                 Map[i].SetActive(false);
+                Debug.Log(i +" ! " + user.levelNumber);
             }
         }
     }

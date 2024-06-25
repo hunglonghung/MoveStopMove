@@ -29,7 +29,7 @@ public class WeaponManager : MonoBehaviour
     [SerializeField] private Player player;
     void Awake()
     {
-        Debug.Log("this is weapon");
+        // Debug.Log("this is weapon");
         GameManager.OnGameStateChanged += GameManagerOnOnGameStateChanged;
     }
 

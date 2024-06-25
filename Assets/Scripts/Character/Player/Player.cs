@@ -79,7 +79,7 @@ public class Player : Character
     public override void SetWeapon(WeaponData weaponData)
     {
         UserData user = GameManager.Instance.userDataManager.userData;
-        Debug.Log("Current wp index:" + user.currentWeaponIndex + weaponData.GetWeaponType(user.currentWeaponIndex));
+        //Debug.Log("Current wp index:" + user.currentWeaponIndex + weaponData.GetWeaponType(user.currentWeaponIndex));
         WeaponType = weaponData.GetWeaponType(user.currentWeaponIndex);
         Gun = weaponData.GetGun(user.currentWeaponIndex);   
         if(Gun != null)

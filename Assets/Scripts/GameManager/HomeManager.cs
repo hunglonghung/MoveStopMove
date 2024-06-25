@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Palmmedia.ReportGenerator.Core;
 using TMPro;
 using UnityEngine;
 using static GameManager;
@@ -12,6 +13,11 @@ public class HomeManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI coinText;
     [SerializeField] public UserData user;
     [SerializeField] public Player player;
+    [SerializeField] private GameObject SoundOffHomeButton;
+    [SerializeField] private GameObject SoundOnHomeButton;
+    [SerializeField] private GameObject VibrationOffHomeButton;
+    [SerializeField] private GameObject VibrationOnHomeButton;
+    [SerializeField] private SettingsManager settingsManager;
     float time;
     private bool isSound = true; 
     void Awake()
@@ -28,12 +34,32 @@ public class HomeManager : MonoBehaviour
     void Start()
     {
         SetCoin();
+        DisplaySettings();
     }
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+    private void DisplaySettings()
+    {
+        SoundOffHomeButton.SetActive(!settingsManager.isSound);
+        SoundOnHomeButton.SetActive(settingsManager.isSound);
+        VibrationOffHomeButton.SetActive(!settingsManager.isVibrate);
+        VibrationOnHomeButton.SetActive(settingsManager.isVibrate);
+    }
+    public void ChangeVolume()
+    {
+        AudioManager.instance.PlayButtonSoundClip();
+        settingsManager.isSound = !settingsManager.isSound;
+        DisplaySettings();
+    }
+    public void ChangeVibration()
+    {
+        AudioManager.instance.PlayButtonSoundClip();
+        settingsManager.isVibrate = !settingsManager.isVibrate;
+        DisplaySettings();
     }
     public void StartGame()
     {
@@ -56,16 +82,6 @@ public class HomeManager : MonoBehaviour
     {
         GameManager.Instance.UpdateGameState(GameState.SkinShop);
         AudioManager.instance.PlayButtonSoundClip();
-    }
-    public void ChangeVolume()
-    {
-        AudioManager.instance.PlayButtonSoundClip();
-        isSound = !isSound;  
-        AudioListener.volume = isSound ? 1 : 0;  
-        for(int i = 0 ; i <= soundButton.Count - 1; i++)
-        {
-            soundButton[i].SetActive(isSound);
-        }
     }
     public void ResetData()
     {

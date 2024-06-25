@@ -5,29 +5,20 @@ using UnityEngine;
 public class UserDataManager : Singleton<UserDataManager>
 {
     public UserData userData;
-    private string userID;
+    private const string userID = "UniqueUserID"; // Sử dụng một userID duy nhất
 
     private void Awake()
     {
         LoadUserID();
         LoadUserData();
     }
-    private void CreateUserId()
-    {
-        userID = System.Guid.NewGuid().ToString();
-        PlayerPrefs.SetString("UserID", userID);
-        PlayerPrefs.Save();
-    }
 
     private void LoadUserID()
     {
-        if (PlayerPrefs.HasKey("UserID"))
+        if (!PlayerPrefs.HasKey(userID))
         {
-            userID = PlayerPrefs.GetString("UserID");
-        }
-        else
-        {
-            CreateUserId();
+            PlayerPrefs.SetString("UserID", userID);
+            PlayerPrefs.Save();
         }
     }
 
@@ -58,11 +49,10 @@ public class UserDataManager : Singleton<UserDataManager>
     {
         return $"UserData_{userID}";
     }
+
     public void ResetUserDataToDefault()
     {
-        CreateUserId();
-        LoadUserID();
-        LoadUserData();
+        userData = new UserData();
         SaveUserData();
     }
 }

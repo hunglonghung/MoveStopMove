@@ -13,8 +13,10 @@ public class SettingsManager : MonoBehaviour
     [SerializeField] private GameObject SoundOnButton;
     [SerializeField] private GameObject VibrationOffButton;
     [SerializeField] private GameObject VibrationOnButton;
-    [SerializeField] private bool isSound = true;
-    [SerializeField] private bool isVibrate = true;
+    [SerializeField] private GameObject VibrationOffHomeButton;
+    [SerializeField] private GameObject VibrationOnButtonButton;
+    [SerializeField] public bool isSound = true;
+    [SerializeField] public bool isVibrate = true;
     [SerializeField] public int AlivePlayers = 100;
     void Awake()
     {

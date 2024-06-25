@@ -26,9 +26,9 @@ public class AudioManager : MonoBehaviour
     {
         ManageSingleton();
         // musicSource = gameObject.AddComponent<AudioSource>();
-        musicSource.clip = musicSound;
-        musicSource.volume = musicVolume;
-        musicSource.loop = true; 
+        // musicSource.clip = musicSound;
+        // musicSource.volume = musicVolume;
+        // musicSource.loop = true; 
     }
 
     void Start()
@@ -82,8 +82,8 @@ public class AudioManager : MonoBehaviour
 
     public void PlayMusic()
     {
-        if (!musicSource.isPlaying)
-            musicSource.Play();
+        // if (!musicSource.isPlaying)
+        //     musicSource.Play();
     }
     void PlayClip(AudioClip clip, float volume)
     {

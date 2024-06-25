@@ -13,6 +13,7 @@ public class LoseUIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI timeText;
     [SerializeField] GameObject image;
     [SerializeField] Player player;
+    [SerializeField] ResultManager resultManager;
     void Awake()
     {
         GameManager.OnGameStateChanged += GameManagerOnOnGameStateChanged;
@@ -37,7 +38,7 @@ public class LoseUIManager : MonoBehaviour
             time -= Time.deltaTime;
             DisplayLoseImage();
         }
-        if(time <= 0) MoveToMainMenu();
+        if(time <= 0) MoveToResult();
     }
 
     private void DisplayLoseImage()
@@ -52,8 +53,10 @@ public class LoseUIManager : MonoBehaviour
         GameManager.Instance.UpdateGameState(GameState.GamePlay);
         AudioManager.instance.PlayButtonSoundClip();
     }
-    public void MoveToMainMenu()
+    public void MoveToResult()
     {
+        resultManager.AddCoin();
+        resultManager.DisplayResult();
         if(time > -1f)
         {
             ResetPlayer();

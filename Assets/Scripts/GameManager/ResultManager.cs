@@ -28,8 +28,7 @@ public class ResultManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        AddCoin();
-        DisplayResult();
+
     }
 
     // Update is called once per frame
@@ -60,11 +59,11 @@ public class ResultManager : MonoBehaviour
     }
     public void DisplayRanking()
     {
-        rankingText.SetText((gameplayManager.AlivePlayers + 1).ToString());
+        rankingText.SetText((gameplayManager.AlivePlayers ).ToString());
     }
     public void DisplayCoin()
     {
-        prize = (100 - gameplayManager.AlivePlayers + 1 ) * 50;
+        prize = (100 - gameplayManager.AlivePlayers  ) * 50;
         coinText.SetText(prize.ToString());
     }
     public void Continue()
@@ -80,6 +79,7 @@ public class ResultManager : MonoBehaviour
         UserData user = Instance.userDataManager.userData;
         user.coin += prize;
         user.levelNumber ++;
+        FindObjectOfType<HomeManager>().SetCoin();
     }
 
 

@@ -70,8 +70,9 @@ public class Bullet : MonoBehaviour
             player.IncreaseVirtualCameraRange(3f);
         }
         Debug.Log(GameplayManager.AlivePlayers);
+        GameplayManager = FindObjectOfType<GameplayManager>();
         GameplayManager.AlivePlayers --;
-        GameplayManager.SetAliveText();
+        GameplayManager.SetAliveText(GameplayManager.AlivePlayers);
         if(victim is Player)
         {
             GameplayManager.MoveToLoseUI();

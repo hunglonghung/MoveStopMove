@@ -8,9 +8,9 @@ using static GameManager;
 
 public class GameplayManager : MonoBehaviour
 {
-    [SerializeField] private GameObject GameplayPanel;
-    [SerializeField] private Button settingsButton;
-    [SerializeField] private TextMeshProUGUI aliveText;
+    [SerializeField] public GameObject GameplayPanel;
+    [SerializeField] public Button settingsButton;
+    [SerializeField] public TextMeshProUGUI aliveText;
     [SerializeField] public UserData user;
     [SerializeField] public int AlivePlayers = 100;
     [SerializeField] public Player player;
@@ -25,23 +25,23 @@ public class GameplayManager : MonoBehaviour
     }
     void Start()
     {
-        SetAliveText();
+        SetAliveText(AlivePlayers);
         AlivePlayers = 100;
         
     }
     void Update()
     {
-
     }
     public void MoveToSettings()
     {
         GameManager.Instance.UpdateGameState(GameState.Settings);
         AudioManager.instance.PlayButtonSoundClip();
     }
-    public void SetAliveText()
+    public void SetAliveText(int AlivePlayers)
     {
         Debug.Log("Before updating text: " + AlivePlayers); // Debug here
         aliveText.text = "Alive: " + AlivePlayers;
+        AlivePlayers--;
         Debug.Log("After updating text: " + AlivePlayers); // Debug here
 
 
